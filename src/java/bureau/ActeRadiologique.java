@@ -22,24 +22,23 @@ public class ActeRadiologique implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private String acteRadiologiquePACS;
     
     @Column
-    private String acteRadiologiquePACS;
     private Date acteRadiologiqueDate;
 
-    public Long getId() {
-        return id;
+    public String getId() {
+        return acteRadiologiquePACS;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(String id) {
+        this.acteRadiologiquePACS = id;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (acteRadiologiquePACS != null ? acteRadiologiquePACS.hashCode() : 0);
         return hash;
     }
 
@@ -50,7 +49,7 @@ public class ActeRadiologique implements Serializable {
             return false;
         }
         ActeRadiologique other = (ActeRadiologique) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.acteRadiologiquePACS == null && other.acteRadiologiquePACS != null) || (this.acteRadiologiquePACS != null && !this.acteRadiologiquePACS.equals(other.acteRadiologiquePACS))) {
             return false;
         }
         return true;
@@ -58,7 +57,7 @@ public class ActeRadiologique implements Serializable {
 
     @Override
     public String toString() {
-        return "bureau.ActeRadiologique[ id=" + id + " ]";
+        return "bureau.ActeRadiologique[ id=" + acteRadiologiquePACS + " ]";
     }
     
 }
