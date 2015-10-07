@@ -5,6 +5,7 @@
  */
 package bureau;
 
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -108,5 +109,33 @@ public class Services {
         em.createQuery("DELETE FROM Crayon").executeUpdate();
         em.getTransaction().commit();
         em.close();
+    }
+    
+    public ActeRadiologique newActeRadiologique(Date dateActe)
+    {
+        ActeRadiologique a = new ActeRadiologique();
+        a.setActeRadiologiqueDate(new java.util.Date());
+        EntityManager em = fact.createEntityManager();
+        em.getTransaction( ).begin( );
+        em.persist(a);
+        em.getTransaction().commit();
+        em.close();
+        return a;
+    }
+    
+    public ActeRadiologique getActeRadiologique(Long id)
+    {
+        EntityManager em = fact.createEntityManager();
+        ActeRadiologique res = em.find( ActeRadiologique.class, id );
+        em.close();
+        return res;
+    }
+    
+    public List<ActeRadiologique> getAllActeRadiologique()
+    {
+        EntityManager em = fact.createEntityManager();
+        TypedQuery<ActeRadiologique> query = em.createQuery("SELECT a FROM ACTERADIOLOGQUE a", ActeRadiologique.class);
+        List<ActeRadiologique> res = query.getResultList();
+        return res;
     }
 }
