@@ -18,21 +18,46 @@ import javax.persistence.Id;
  */
 @Entity
 public class Admission implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String admissionIEP;
+    private Long admissionIEP;
     @Column
-    
+
     private String admissionIPP;
+
+    public String getAdmissionIPP() {
+        return admissionIPP;
+    }
+
+    public void setAdmissionIPP(String admissionIPP) {
+        this.admissionIPP = admissionIPP;
+    }
+
+    public String getAdmissionNom() {
+        return admissionNom;
+    }
+
+    public void setAdmissionNom(String admissionNom) {
+        this.admissionNom = admissionNom;
+    }
+
+    public String getAdmissionPrenom() {
+        return admissionPrenom;
+    }
+
+    public void setAdmissionPrenom(String admissionPrenom) {
+        this.admissionPrenom = admissionPrenom;
+    }
     private String admissionNom;
     private String admissionPrenom;
 
-    public String getId() {
+    public Long getId() {
         return admissionIEP;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.admissionIEP = id;
     }
 
@@ -60,5 +85,5 @@ public class Admission implements Serializable {
     public String toString() {
         return "bureau.Admission[ id=" + admissionIEP + " ]";
     }
-    
+
 }

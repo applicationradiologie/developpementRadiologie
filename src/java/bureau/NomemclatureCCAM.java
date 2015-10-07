@@ -6,6 +6,7 @@
 package bureau;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,20 +21,33 @@ public class NomemclatureCCAM implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long nomenclatureCCAMCode;
+    
+    @Column
+    private String nomenclatureCCAMLibelle; 
 
-    public Long getId() {
-        return id;
+    public Long getNomenclatureCCAMCode() {
+        return nomenclatureCCAMCode;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setNomenclatureCCAMCode(Long nomenclatureCCAMCode) {
+        this.nomenclatureCCAMCode = nomenclatureCCAMCode;
     }
+
+    public String getNomenclatureCCAMLibelle() {
+        return nomenclatureCCAMLibelle;
+    }
+
+    public void setNomenclatureCCAMLibelle(String nomenclatureCCAMLibelle) {
+        this.nomenclatureCCAMLibelle = nomenclatureCCAMLibelle;
+    }
+
+
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (nomenclatureCCAMCode != null ? nomenclatureCCAMCode.hashCode() : 0);
         return hash;
     }
 
@@ -44,7 +58,7 @@ public class NomemclatureCCAM implements Serializable {
             return false;
         }
         NomemclatureCCAM other = (NomemclatureCCAM) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.nomenclatureCCAMCode == null && other.nomenclatureCCAMCode != null) || (this.nomenclatureCCAMCode != null && !this.nomenclatureCCAMCode.equals(other.nomenclatureCCAMCode))) {
             return false;
         }
         return true;
@@ -52,7 +66,7 @@ public class NomemclatureCCAM implements Serializable {
 
     @Override
     public String toString() {
-        return "bureau.NomemclatureCCAM[ id=" + id + " ]";
+        return "bureau.NomemclatureCCAM[ id=" + nomenclatureCCAMCode + " ]";
     }
     
 }

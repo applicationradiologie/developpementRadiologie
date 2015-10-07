@@ -19,19 +19,27 @@ import javax.persistence.Id;
  */
 @Entity
 public class ActeRadiologique implements Serializable {
+
+    public Date getActeRadiologiqueDate() {
+        return acteRadiologiqueDate;
+    }
+
+    public void setActeRadiologiqueDate(Date acteRadiologiqueDate) {
+        this.acteRadiologiqueDate = acteRadiologiqueDate;
+    }
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String acteRadiologiquePACS;
-    
+    private Long acteRadiologiquePACS;
+
     @Column
     private Date acteRadiologiqueDate;
 
-    public String getId() {
+    public Long getId() {
         return acteRadiologiquePACS;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.acteRadiologiquePACS = id;
     }
 
@@ -59,5 +67,5 @@ public class ActeRadiologique implements Serializable {
     public String toString() {
         return "bureau.ActeRadiologique[ id=" + acteRadiologiquePACS + " ]";
     }
-    
+
 }
