@@ -112,10 +112,14 @@ public class Services {
     }
     
     //Acte Radiologique
-    public ActeRadiologique newActeRadiologique(Date dateActe)
+    public ActeRadiologique newActeRadiologique(Date dateActe, Admission ad, List<ImageRadiologique> images, Appareil appareil, NomemclatureCCAM nomemclatureCCAM)
     {
         ActeRadiologique a = new ActeRadiologique();
         a.setActeRadiologiqueDate(new java.util.Date());
+        a.setAdmission(ad);
+        a.setImages(images);
+        a.setAppareil(appareil);
+        a.setNomenclatureCCAM(nomemclatureCCAM);
         EntityManager em = fact.createEntityManager();
         em.getTransaction( ).begin( );
         em.persist(a);

@@ -7,11 +7,16 @@ package bureau;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -31,12 +36,55 @@ public class ActeRadiologique implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long acteRadiologiquePACS;
+    private Appareil appareil;
+    private NomemclatureCCAM nomenclatureCCAM;
 
     @Column
+    @ManyToOne(fetch = FetchType.EAGER, cascade =CascadeType.ALL)
+    Admission admission;
+    
+    @OneToMany(fetch = FetchType.EAGER, cascade =CascadeType.ALL)
+    List<ImageRadiologique> images;
+    
+    
+    
     private Date acteRadiologiqueDate;
 
+    public List<ImageRadiologique> getImages() {
+        return images;
+    }
+
+    public void setImages(List<ImageRadiologique> images) {
+        this.images = images;
+    }
+
+    public Appareil getAppareil() {
+        return appareil;
+    }
+
+    public void setAppareil(Appareil appareil) {
+        this.appareil = appareil;
+    }
+
+    public NomemclatureCCAM getNomenclatureCCAM() {
+        return nomenclatureCCAM;
+    }
+
+    public void setNomenclatureCCAM(NomemclatureCCAM nomenclatureCCAM) {
+        this.nomenclatureCCAM = nomenclatureCCAM;
+    }
+    
+    
     public Long getId() {
         return acteRadiologiquePACS;
+    }
+
+    public Admission getAdmission() {
+        return admission;
+    }
+
+    public void setAdmission(Admission admission) {
+        this.admission = admission;
     }
 
     public void setId(Long id) {
