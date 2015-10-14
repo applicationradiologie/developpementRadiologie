@@ -18,20 +18,22 @@ import javax.persistence.Id;
  */
 @Entity
 public class NomemclatureCCAM implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long nomenclatureCCAMCode;
-    
-    @Column
-    private String nomenclatureCCAMLibelle; 
+    private Long nomenclatureCCAMId;
 
-    public Long getNomenclatureCCAMCode() {
-        return nomenclatureCCAMCode;
+    @Column
+    private String nomenclatureCCAMLibelle;
+    private String nomemclatureCCAMCode;
+
+    public String getNomemclatureCCAMCode() {
+        return nomemclatureCCAMCode;
     }
 
-    public void setNomenclatureCCAMCode(Long nomenclatureCCAMCode) {
-        this.nomenclatureCCAMCode = nomenclatureCCAMCode;
+    public void setNomemclatureCCAMCode(String nomemclatureCCAMCode) {
+        this.nomemclatureCCAMCode = nomemclatureCCAMCode;
     }
 
     public String getNomenclatureCCAMLibelle() {
@@ -42,12 +44,10 @@ public class NomemclatureCCAM implements Serializable {
         this.nomenclatureCCAMLibelle = nomenclatureCCAMLibelle;
     }
 
-
-
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (nomenclatureCCAMCode != null ? nomenclatureCCAMCode.hashCode() : 0);
+        hash += (nomenclatureCCAMId != null ? nomenclatureCCAMId.hashCode() : 0);
         return hash;
     }
 
@@ -58,7 +58,7 @@ public class NomemclatureCCAM implements Serializable {
             return false;
         }
         NomemclatureCCAM other = (NomemclatureCCAM) object;
-        if ((this.nomenclatureCCAMCode == null && other.nomenclatureCCAMCode != null) || (this.nomenclatureCCAMCode != null && !this.nomenclatureCCAMCode.equals(other.nomenclatureCCAMCode))) {
+        if ((this.nomenclatureCCAMId == null && other.nomenclatureCCAMId != null) || (this.nomenclatureCCAMId != null && !this.nomenclatureCCAMId.equals(other.nomenclatureCCAMId))) {
             return false;
         }
         return true;
@@ -66,7 +66,7 @@ public class NomemclatureCCAM implements Serializable {
 
     @Override
     public String toString() {
-        return "bureau.NomemclatureCCAM[ id=" + nomenclatureCCAMCode + " ]";
+        return "bureau.NomemclatureCCAM[ id=" + nomenclatureCCAMId + " ]";
     }
-    
+
 }
