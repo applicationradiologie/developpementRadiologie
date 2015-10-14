@@ -149,7 +149,7 @@ public class Services {
         em.close();
     }
 
-    public List<ActeRadiologique> getActeRadiologiqueByAdmission(Long iep) {
+    public List<ActeRadiologique> getActeRadiologiqueByAdmission(String iep) {
         EntityManager em = fact.createEntityManager();
         TypedQuery<ActeRadiologique> query = em.createQuery("SELECT a FROM ActeRadiologique a JOIN a.admission adm WHERE adm.iep= :iep", ActeRadiologique.class).setParameter("iep", iep);
         List<ActeRadiologique> res = query.getResultList();

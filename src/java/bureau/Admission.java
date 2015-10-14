@@ -31,27 +31,17 @@ public class Admission implements Serializable {
         return admissionIPP;
     }
 
+    public Long getAdmissionIEP() {
+        return admissionIEP;
+    }
+
+    public void setAdmissionIEP(Long admissionIEP) {
+        this.admissionIEP = admissionIEP;
+    }
+
     public void setAdmissionIPP(String admissionIPP) {
         this.admissionIPP = admissionIPP;
     }
-
-    public String getAdmissionNom() {
-        return admissionNom;
-    }
-
-    public void setAdmissionNom(String admissionNom) {
-        this.admissionNom = admissionNom;
-    }
-
-    public String getAdmissionPrenom() {
-        return admissionPrenom;
-    }
-
-    public void setAdmissionPrenom(String admissionPrenom) {
-        this.admissionPrenom = admissionPrenom;
-    }
-    private String admissionNom;
-    private String admissionPrenom;
 
     public Long getId() {
         return admissionIEP;
