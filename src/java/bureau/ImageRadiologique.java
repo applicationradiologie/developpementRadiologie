@@ -24,6 +24,22 @@ public class ImageRadiologique implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long imageRadiologiqueId;
 
+    public void setImageRadiologiqueURL(String imageRadiologiqueURL) {
+        this.imageRadiologiqueURL = imageRadiologiqueURL;
+    }
+
+    public void setImageRadiologiqueFormat(String imageRadiologiqueFormat) {
+        this.imageRadiologiqueFormat = imageRadiologiqueFormat;
+    }
+
+    public void setImageRadiologiquePoids(String imageRadiologiquePoids) {
+        this.imageRadiologiquePoids = imageRadiologiquePoids;
+    }
+
+    public void setImageRadiologiqueLibelle(String imageRadiologiqueLibelle) {
+        this.imageRadiologiqueLibelle = imageRadiologiqueLibelle;
+    }
+
     @Column
     private String imageRadiologiqueURL;
 

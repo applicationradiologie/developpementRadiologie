@@ -111,6 +111,7 @@ public class Services {
         em.close();
     }
     
+    //Acte Radiologique
     public ActeRadiologique newActeRadiologique(Date dateActe)
     {
         ActeRadiologique a = new ActeRadiologique();
@@ -134,8 +135,168 @@ public class Services {
     public List<ActeRadiologique> getAllActeRadiologique()
     {
         EntityManager em = fact.createEntityManager();
-        TypedQuery<ActeRadiologique> query = em.createQuery("SELECT a FROM ACTERADIOLOGQUE a", ActeRadiologique.class);
+        TypedQuery<ActeRadiologique> query = em.createQuery("SELECT a FROM ACTERADIOLOGIQUE a", ActeRadiologique.class);
         List<ActeRadiologique> res = query.getResultList();
         return res;
+    }
+    
+    public void deleteAllActeRadiologique (){
+        EntityManager em = fact.createEntityManager();
+        em.getTransaction( ).begin( );
+        em.createQuery("DELETE FROM ACTERADIOLOGIQUE").executeUpdate();
+        em.getTransaction().commit();
+        em.close();
+    }
+    
+    //Admission
+    public Admission newAdmission(String IPP)
+    {
+        Admission a = new Admission();
+        a.setAdmissionIPP(IPP);
+        EntityManager em = fact.createEntityManager();
+        em.getTransaction( ).begin( );
+        em.persist(a);
+        em.getTransaction().commit();
+        em.close();
+        return a;
+    }
+    
+    public Admission getAdmission(Long iep)
+    {
+        EntityManager em = fact.createEntityManager();
+        Admission adm = em.find( Admission.class, iep );
+        em.close();
+        return adm;
+    }
+    
+    public List<Admission> getAllAdmission()
+    {
+        EntityManager em = fact.createEntityManager();
+        TypedQuery<Admission> query = em.createQuery("SELECT a FROM ADMISSION a", Admission.class);
+        List<Admission> res = query.getResultList();
+        return res;
+    }
+    
+    public void deleteAllAdmission (){
+        EntityManager em = fact.createEntityManager();
+        em.getTransaction( ).begin( );
+        em.createQuery("DELETE FROM ADMISSION").executeUpdate();
+        em.getTransaction().commit();
+        em.close();
+    }
+    
+    //Appareil
+    public Appareil newAppareil(String AppareilLibelle, String AppareilModalite)
+    {
+        Appareil a = new Appareil();
+        a.setAppareilLibelle(AppareilLibelle);
+        a.setAppareilModalite(AppareilModalite);
+        EntityManager em = fact.createEntityManager();
+        em.getTransaction( ).begin( );
+        em.persist(a);
+        em.getTransaction().commit();
+        em.close();
+        return a;
+    }
+    
+    public Appareil getAppareil(Long id)
+    {
+        EntityManager em = fact.createEntityManager();
+        Appareil ap = em.find( Appareil.class, id );
+        em.close();
+        return ap;
+    }
+    
+    public List<Appareil> getAllAppareil()
+    {
+        EntityManager em = fact.createEntityManager();
+        TypedQuery<Appareil> query = em.createQuery("SELECT a FROM APPAREIL a", Appareil.class);
+        List<Appareil> res = query.getResultList();
+        return res;
+    }
+    
+    public void deleteAllAppareil (){
+        EntityManager em = fact.createEntityManager();
+        em.getTransaction( ).begin( );
+        em.createQuery("DELETE FROM APPAREIL").executeUpdate();
+        em.getTransaction().commit();
+        em.close();
+    }
+    
+    //Image Radiologique
+    public ImageRadiologique newImageRadiologique(String imageRadiologiqueURL, String imageRadiologiqueFormat, String imageRadiolgoquePoids, String imageRadiologiqueLibelle)
+    {
+        ImageRadiologique a = new ImageRadiologique();
+        a.setImageRadiologiqueURL(imageRadiologiqueURL);
+        a.setImageRadiologiqueFormat(imageRadiologiqueFormat);
+        a.setImageRadiologiquePoids(imageRadiolgoquePoids);
+        a.setImageRadiologiqueLibelle(imageRadiologiqueLibelle);
+        EntityManager em = fact.createEntityManager();
+        em.getTransaction( ).begin( );
+        em.persist(a);
+        em.getTransaction().commit();
+        em.close();
+        return a;
+    }
+    
+    public ImageRadiologique getImageRadiologique(Long id)
+    {
+        EntityManager em = fact.createEntityManager();
+        ImageRadiologique i = em.find( ImageRadiologique.class, id );
+        em.close();
+        return i;
+    }
+    
+    public List<ImageRadiologique> getAllImageRadiologique()
+    {
+        EntityManager em = fact.createEntityManager();
+        TypedQuery<ImageRadiologique> query = em.createQuery("SELECT a FROM IMAGERADIOLOGIQUE a", ImageRadiologique.class);
+        List<ImageRadiologique> res = query.getResultList();
+        return res;
+    }
+    
+    public void deleteAllImageRadiologique (){
+        EntityManager em = fact.createEntityManager();
+        em.getTransaction( ).begin( );
+        em.createQuery("DELETE FROM IMAGERADIOLOGIQUE").executeUpdate();
+        em.getTransaction().commit();
+        em.close();
+    }
+    
+    //NomemclatureCCAM
+    public NomemclatureCCAM newNomemclatureCCAM(String NomemclatureCCAMLibelle)
+    {
+        NomemclatureCCAM a = new NomemclatureCCAM();
+        a.setNomenclatureCCAMLibelle(NomemclatureCCAMLibelle);
+        EntityManager em = fact.createEntityManager();
+        em.getTransaction( ).begin( );
+        em.persist(a);
+        em.getTransaction().commit();
+        em.close();
+        return a;
+    }
+    
+    public NomemclatureCCAM getNomemclatureCCAM(Long code)
+    {
+        EntityManager em = fact.createEntityManager();
+        NomemclatureCCAM nc = em.find( NomemclatureCCAM.class, code );
+        em.close();
+        return nc;
+    }
+    
+    public List<NomemclatureCCAM> getAllNomemclatureCCAM()
+    {
+        EntityManager em = fact.createEntityManager();
+        TypedQuery<NomemclatureCCAM> query = em.createQuery("SELECT a FROM NOMEMCLATURECCAM a", NomemclatureCCAM.class);
+        List<NomemclatureCCAM> res = query.getResultList();
+        return res;
+    }
+    
+    public void deleteAllNomemclatureCCAM (){
+        EntityManager em = fact.createEntityManager();
+        em.getTransaction( ).begin( );
+        em.createQuery("DELETE FROM NOMEMCLATURECCAM").executeUpdate();
+        em.getTransaction().commit();
+        em.close();
     }
 }
