@@ -5,6 +5,7 @@
  */
 package bureau;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -168,6 +169,21 @@ public class Services {
         em.getTransaction().begin();
         em.createQuery("DELETE FROM Admission").executeUpdate();
         em.getTransaction().commit();
+    }
+    
+    public List<ImageRadiologique> getImagesByAdmission(String ipp)
+    {
+        TypedQuery<ActeRadiologique> query = em.createQuery("SELECT a FROM ActeRadiologique a JOIN a.admission adm WHERE adm.admissionIPP= :ipp", ActeRadiologique.class).setParameter("ipp", ipp);
+        List<ActeRadiologique> res = query.getResultList();
+        List<ImageRadiologique> img = new ArrayList<>();
+        for (ActeRadiologique act : res)
+         {
+             for(ImageRadiologique im : act.getImages())
+             {
+                 img.add(im);
+             }
+         }
+        return img;
     }
 
     //Appareil

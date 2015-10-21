@@ -132,7 +132,7 @@ public class bureauTest {
 
     @Test
     public void NomemclatureCCAM() {
-        clean();
+        //clean();
         Services serv = new Services(DatabaseUtils.fact());
         NomemclatureCCAM nc = serv.newNomemclatureCCAM("Radiologie du thorax", "ZBQK002");
         assertNotNull(nc);
@@ -150,7 +150,7 @@ public class bureauTest {
 
     @Test
     public void ImageRadiologique() {
-        clean();
+        //clean();
         Services serv = new Services(DatabaseUtils.fact());
         ImageRadiologique im = serv.newImageRadiologique("http://www.image-drole.eu/wp-content/uploads/2010/03/coca.jpg", "JPG", "34KoB", "Bouteille Rectum");
         assertNotNull(im);
@@ -165,7 +165,7 @@ public class bureauTest {
 
     @Test
     public void Admission() {
-        clean();
+        //clean();
         Services serv = new Services(DatabaseUtils.fact());
         Admission adm = serv.newAdmission("4454fd1fdsfsd");
         assertNotNull(adm);
@@ -181,7 +181,7 @@ public class bureauTest {
 
     @Test
     public void ActeRadiologique() throws ParseException {
-        clean();
+        //clean();
         Services serv = new Services(DatabaseUtils.fact());
         //Creation des images
         List<ImageRadiologique> liste = new ArrayList<>();
@@ -215,6 +215,10 @@ public class bureauTest {
         //Test d'ajout d'une image à un acte radiollogique
         ImageRadiologique im5 = serv.newImageRadiologique("http://www.radiologie-luton-reims.fr/imageszoom/image003.gif", "gif", "56KoB", "Main");
         serv.updateActeRadiologiqueImage(a, im5);
+        assertNotNull(a);
+        
+        //Test consulter les images d'un patient
+        List<ImageRadiologique> images = serv.getImagesByAdmission("4454fd1fdsfsd");
         assertNotNull(a);
         
         
