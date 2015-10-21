@@ -26,6 +26,8 @@ public class NomemclatureCCAM implements Serializable {
 
     @Column
     private String nomenclatureCCAMLibelle;
+    
+    @Column
     private String nomemclatureCCAMCode;
 
     public String getNomemclatureCCAMCode() {

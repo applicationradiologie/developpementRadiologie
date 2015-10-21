@@ -200,7 +200,7 @@ public class bureauTest {
         //Creation de l'appareil
         Appareil ap = serv.newAppareil("Appareil service neurologie", "IRM");
         //Nomemclature
-        NomemclatureCCAM nc = serv.newNomemclatureCCAM("Restitution tridimensionnelle des images acquises par remnographie", "ZZQN002");
+        NomemclatureCCAM nc = serv.newNomemclatureCCAM("Restitution", "ZZQN002");
         
         //Creation de l'acte radiologique
         Date d = new SimpleDateFormat("dd/MM/yyyy").parse("14/10/2015");

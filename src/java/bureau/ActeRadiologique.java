@@ -17,6 +17,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -37,7 +38,12 @@ public class ActeRadiologique implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     private Long acteRadiologiquePACS;
+    
+    @OneToOne
     private Appareil appareil;
+    
+    
+    @OneToOne
     private NomemclatureCCAM nomenclatureCCAM;
 
     
