@@ -212,6 +212,11 @@ public class bureauTest {
         assert(!actes.isEmpty());
         assert(actes.get(0).getAdmission().getAdmissionIEP()==iep);
         
+        //Test d'ajout d'une image à un acte radiollogique
+        ImageRadiologique im5 = serv.newImageRadiologique("http://www.radiologie-luton-reims.fr/imageszoom/image003.gif", "gif", "56KoB", "Main");
+        serv.updateActeRadiologiqueImage(a, im5);
+        assertNotNull(a);
+        
         
     }
 

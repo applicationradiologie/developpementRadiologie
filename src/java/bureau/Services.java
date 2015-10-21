@@ -134,6 +134,14 @@ public class Services {
         return res;
 
     }
+    
+     public void updateActeRadiologiqueImage( ActeRadiologique act, ImageRadiologique img)
+     {
+         act.images.add(img);
+         em.getTransaction().begin();
+         em.persist(act);
+         em.getTransaction().commit();
+     }
 
     //Admission
     public Admission newAdmission(String IPP) {
@@ -219,6 +227,8 @@ public class Services {
         em.createQuery("DELETE FROM ImageRadiologique").executeUpdate();
         em.getTransaction().commit();
     }
+    
+   
 
     //NomemclatureCCAM
     public NomemclatureCCAM newNomemclatureCCAM(String NomemclatureCCAMLibelle, String nomenclatureCCAMCode) {
