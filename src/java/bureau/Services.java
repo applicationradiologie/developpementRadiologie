@@ -27,6 +27,12 @@ public class Services {
         this.fact = fact;
         this.em = fact.createEntityManager();
     }
+    
+    public void newCrayon(Crayon cr) {
+	em.getTransaction( ).begin( );
+        em.persist(cr);
+        em.getTransaction().commit();
+    }
 
     public Crayon newCrayon(String couleur) {
         Crayon p = new Crayon();
@@ -36,6 +42,22 @@ public class Services {
         em.persist(p);
         em.getTransaction().commit();
         return p;
+    }
+    
+    public void editCrayon(Crayon cr) {
+      
+	em.getTransaction( ).begin( );
+        em.merge(cr);
+        em.getTransaction().commit();
+     
+    }
+    public void removeCrayon(int id) {
+       
+        Crayon cr = em.find( Crayon.class, id );
+	em.getTransaction( ).begin( );
+        em.remove(cr);
+        em.getTransaction().commit();
+       
     }
 
     public Crayon getCrayonsById(int id) {
