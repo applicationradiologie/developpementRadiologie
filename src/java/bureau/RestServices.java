@@ -99,6 +99,7 @@ public class RestServices {
     
     //-----------------------RADIOLOGIE-----------------------
     
+    //Afficher les actes radiologiques par admission
     @GET
     @Path("actes/{ipp}")
     @Produces("application/json")
@@ -108,6 +109,7 @@ public class RestServices {
         return serv.getActeRadiologiqueByAdmission(ipp);
     }
     
+    //Obtenir les actes radiologiques d'une admission
     @GET
     @Path("admission/{iep}")
     @Produces("application/json")
@@ -117,6 +119,16 @@ public class RestServices {
         return serv.getAdmission(iep);
     }
     
+    //Consulter les images d'un patient
+    @GET
+    @Path("acteradiologique/{ipp}")
+    @Produces("application/json")
+    public List<ImageRadiologique> getImagesByAdmission(@PathParam("ipp") String ipp){
+         Services serv = new Services(DatabaseUtils.fact());
+         return serv.getImagesByAdmission(ipp);
+    }
+    
+    //Créer un acte radiologique
     @POST
     @Path("acteradiologique")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -127,6 +139,7 @@ public class RestServices {
         return act;
     }
     
+    //Créer une modalité d'imagerie
     @POST
     @Path("modaliteimagerie")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -137,6 +150,7 @@ public class RestServices {
         return appa;
     }
     
+    //Ajouter une image à un acte
     @POST
     @Path("acteradiologique/{iep}")
     @Consumes(MediaType.APPLICATION_JSON)
