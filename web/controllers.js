@@ -1,34 +1,49 @@
+var project = angular.module('monApp');
 
-angular.module('monApp').controller('CrayonsController', [ 'Crayons',
-    function (Crayons) {
-        this.crayons = Crayons.query();
-        this.delete = function (cr) {
-            // appel DELETE asynchrone au service web sur /crayons/{id}
-            //cr.$delete();
-            Crayons.delete(cr);
-            // remet à jour le tableau des crayons en suprimant l'élément effacé
-            this.crayons.splice(this.crayons.indexOf(cr), 1);
-        };
+project.controller('ActeRadiologiqueController', [ 'ActeRadiologique',
+    function (ActeRadiologique) {
+        this.acte = ActeRadiologique.query();
     }
-])
+]);
 
-.controller('CrayonNewController', [ 'Crayons',
-   function(Crayons) {
-    this.cr = new Crayons();
-    this.update = function() { 
-        // appel POST asynchrone au service web sur /crayons
-       this.cr.$save();
+project.controller('ActeRadiologiqueNewController', [ 'ActeRadiologique',
+   function(ActeRadiologique) {
+    this.acte = new ActeRadiologique();
+    this.update = function() {
+       this.acte.$save();
    };
-}])
+}]);
 
-
-.controller('CrayonEditController', [ '$routeParams', 'Crayons', '$location',
-function($routeParams, Crayons, $location) {
-    this.cr = Crayons.get({id: $routeParams.id}); 
+project.controller('ActeRadiologiqueEditController', [ '$routeParams', 'ActeRadiologique',
+function($routeParams, ActeRadiologique) {
+    this.acte = ActeRadiologique.get({ipp: $routeParams.ipp}); 
     this.update = function() {
         // appel POST asynchrone au service web sur /crayons/{id} 
-        this.cr.$save();
-        $location.path("/")
+        this.acte.$save();
+    };
+}
+]);
+
+project.controller('AppareilController', [ 'Appareil',
+    function (Appareil) {
+        this.appa = Appareil.query();
+    }
+]);
+
+project.controller('AppareilNewController', [ 'Appareil',
+   function(Appareil) {
+    this.appa = new Appareil();
+    this.update = function() {
+       this.appa.$save();
+   };
+}]);
+
+project.controller('AppareilEditController', [ '$routeParams', 'Appareil',
+function($routeParams, Appareil) {
+    this.appa = Appareil.get({appa: $routeParams.appa}); 
+    this.update = function() {
+        // appel POST asynchrone au service web sur /crayons/{id} 
+        this.appa.$save();
     };
 }
 ]);

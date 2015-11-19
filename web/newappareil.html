@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+    <center>
+        <h1>Radio Tout Faire</h1>
+        <i>Le module pour le service d'imagerie</i>
+    </center>
+    <hr/>
+    <form>
+        <br/><br/>
+        <fieldset>
+            <legend>Nouvel Appareil</legend> 
+            <table>
+                <tr>
+                    <td>Libellé</td>
+                    <td><input type="text" name="libelleAppareil" ng-model="ctrl.appa.appareilLibelle"></td>
+                </tr>
+                <tr>
+                    <td>Modalité d'imagerie</td>
+                    <td><input type="text" name="modaliteImagerie" ng-model="ctrl.appa.appareilModalite"/></td>
+                </tr>
+            </table>
+
+
+            <br/><br/>
+
+            <input type="submit" value="Annuler" ng-click="" />
+            <input type="submit" value="Enregistrer" ng-click="ctrl.update()" />
+
+        </fieldset>
+
+
+
+    </form>
+</body>
+</html>

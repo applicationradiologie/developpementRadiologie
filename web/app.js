@@ -9,16 +9,16 @@ angular.module('monApp', ['ngRoute','ngResource']);
 angular.module('monApp').config(['$routeProvider', function routeConfig($routeProvider) {
     $routeProvider
      .when('/', {
-        controller: "CrayonsController as ctrl",
-        templateUrl: 'listeCrayon.html'    
+        controller: "AppareilController as ctrl",
+        templateUrl: 'accueil.html'    
     })
-     .when('/crayon/edit/:id', {
-        controller: "CrayonEditController as ctrl",
-        templateUrl: 'editCrayon.html'    
+     .when('/newacte', {
+        controller: "ActeRadiologiqueNewController as ctrl",
+        templateUrl: 'newacte.html'    
     })
-     .when('/crayon/new', {
-        controller: "CrayonNewController as ctrl",
-        templateUrl: 'newCrayon.html'    
+     .when('/newappareil', {
+        controller: "AppareilNewController as ctrl",
+        templateUrl: 'newappareil.html'    
     })
     .otherwise({ redirectTo: '/'});
 }]);

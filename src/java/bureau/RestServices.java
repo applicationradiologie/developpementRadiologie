@@ -48,6 +48,7 @@ public class RestServices {
      * Retrieves representation of an instance of bureau.RestServices
      * @return an instance of java.lang.String
      */
+    
     @GET
     @Path("crayons/{id}")
     @Produces("application/json")
@@ -96,10 +97,10 @@ public class RestServices {
         serv.removeCrayon(id);
         return Response.status(200).build();
     }
-    
+    /*
     //-----------------------RADIOLOGIE-----------------------
-    
-    //Afficher les actes radiologiques par admission
+    */
+    //Afficher les actes radiologiques par admission OK
     @GET
     @Path("actes/{ipp}")
     @Produces("application/json")
@@ -109,7 +110,7 @@ public class RestServices {
         return serv.getActeRadiologiqueByAdmission(ipp);
     }
     
-    //Obtenir les actes radiologiques d'une admission
+    //Obtenir les actes radiologiques d'une admission OK
     @GET
     @Path("admission/{iep}")
     @Produces("application/json")
@@ -118,8 +119,8 @@ public class RestServices {
         Services serv = new Services(DatabaseUtils.fact());
         return serv.getAdmission(iep);
     }
-    
-    //Consulter les images d'un patient
+     
+    //Consulter les images d'un patient OK
     @GET
     @Path("acteradiologique/{ipp}")
     @Produces("application/json")
@@ -127,8 +128,8 @@ public class RestServices {
          Services serv = new Services(DatabaseUtils.fact());
          return serv.getImagesByAdmission(ipp);
     }
-    
-    //Créer un acte radiologique
+   
+    //Créer un acte radiologique OK
     @POST
     @Path("acteradiologique")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -139,9 +140,9 @@ public class RestServices {
         return act;
     }
     
-    //Créer une modalité d'imagerie
+    //Créer une modalité d'imagerie OK
     @POST
-    @Path("modaliteimagerie")
+    @Path("appareil")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces("application/json")
     public Appareil newAppareil(Appareil appa){
@@ -150,7 +151,8 @@ public class RestServices {
         return appa;
     }
     
-    //Ajouter une image à un acte
+    //Ajouter une image à un acte --> LE coupable !!!!!!!!!!!!
+    /*
     @POST
     @Path("acteradiologique/{iep}")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -160,6 +162,7 @@ public class RestServices {
         serv.updateActeRadiologiqueImage(act, img);
         return Response.status(200).entity(act).build();
     }
+    */
     
     
    
