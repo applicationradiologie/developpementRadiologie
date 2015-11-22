@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <table>
+    <tr>
+        <th> acteRadiologiquePACS </th>
+        <th> acteRadiologiqueDate </th>
+        <th> admission_admissionIEP </th>
+        <th>appareil_appareilId</th>
+        <th> nomenclatureCCAM_nomenclatureCCAMId</th>
+    <tr ng-repeat='at in ctrl.acte'>
+        <td> {{ at.acteRadiologiquePACS}} </td>
+        <td> {{ at.admission_admissionIEP}} </td>
+        <td> {{ at.appareil_appareilId}} </td>
+        <td> {{ at.nomenclatureCCAM_nomenclatureCCAMId}} </td>
+    </tr>
+</table>
+    </body>
+</html>

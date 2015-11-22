@@ -128,7 +128,17 @@ public class RestServices {
          Services serv = new Services(DatabaseUtils.fact());
          return serv.getImagesByAdmission(ipp);
     }
+    
+    //Obtenir tous les appareils
+    @GET
+    @Path("appareils")
+    @Produces("application/json")
+    public List<Appareil> getAppareils() {
+        //TODO return proper representation object
+        return serv.getAllAppareil();
+    }
    
+    
     //Créer un acte radiologique OK
     @POST
     @Path("acteradiologique")
@@ -147,7 +157,7 @@ public class RestServices {
     @Produces("application/json")
     public Appareil newAppareil(Appareil appa){
         serv.newAppareil(appa.getAppareilLibelle(), appa.getAppareilModalite());
-        System.out.println("L'appareil "+appa.getAppareilLibelle()+"a ");
+        System.out.println("L'appareil "+appa.getAppareilLibelle()+"a été ajouté ");
         return appa;
     }
     
