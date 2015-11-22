@@ -161,6 +161,14 @@ public class RestServices {
         return appa;
     }
     
+    //Supprimer un appareil
+    @DELETE
+    @Path("appareil/{appareilId}")
+    public Response removeAppareil(@PathParam("appareilId") int id) {
+        serv.removeAppareil(id);
+        return Response.status(200).build();
+    }
+    
     //Ajouter une image à un acte --> LE coupable !!!!!!!!!!!!
     /*
     @POST

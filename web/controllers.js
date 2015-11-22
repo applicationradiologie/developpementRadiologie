@@ -6,9 +6,12 @@ angular.module('monApp').controller('ActeRadiologiqueController', ['ActeRadiolog
     }
 ]);
 
-angular.module('monApp').controller('ActeRadiologiqueNewController', ['ActeRadiologique',
-    function (ActeRadiologique) {
+angular.module('monApp').controller('ActeRadiologiqueNewController', ['ActeRadiologique','Admission','Appareil','NomemclatureCCAM',
+    function (ActeRadiologique,Admission,Appareil,NomemclatureCCAM) {
         this.acte = new ActeRadiologique();
+        this.admission = Admission.query();
+        this.appareil = Appareil.query();
+        this.nomen = NomemclatureCCAM.query();
         this.update = function () {
             this.acte.$save();
         };
@@ -25,9 +28,18 @@ angular.module('monApp').controller('ActeRadiologiqueEditController', ['$routePa
 ]);
 
 angular.module('monApp').controller('AppareilController', ['Appareil',
-    function (Appareil) {
+    function (Appareils) {
         console.log("ca passe");
-        this.appareil = Appareil.query();
+        this.appareil = Appareils.query();
+        this.delete = function (appa) {
+            // appel DELETE asynchrone au service web sur /crayons/{id}
+            //cr.$delete();
+            console.log("suppression");
+            Appareils.delete(appa);
+            console.log("suppression2");
+            // remet à jour le tableau des crayons en suprimant l'élément effacé
+            //this.appareil.splice(this.appareil.indexOf(appa), 1);
+        };
     }
 ]);
 

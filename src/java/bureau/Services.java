@@ -27,9 +27,9 @@ public class Services {
         this.fact = fact;
         this.em = fact.createEntityManager();
     }
-    
+
     public void newCrayon(Crayon cr) {
-	em.getTransaction( ).begin( );
+        em.getTransaction().begin();
         em.persist(cr);
         em.getTransaction().commit();
     }
@@ -37,44 +37,45 @@ public class Services {
     public Crayon newCrayon(String couleur) {
         Crayon p = new Crayon();
         p.setCouleur(couleur);
-        
+
         em.getTransaction().begin();
         em.persist(p);
         em.getTransaction().commit();
         return p;
     }
-    
+
     public void editCrayon(Crayon cr) {
-      
-	em.getTransaction( ).begin( );
+
+        em.getTransaction().begin();
         em.merge(cr);
         em.getTransaction().commit();
-     
+
     }
+
     public void removeCrayon(int id) {
-       
-        Crayon cr = em.find( Crayon.class, id );
-	em.getTransaction( ).begin( );
+
+        Crayon cr = em.find(Crayon.class, id);
+        em.getTransaction().begin();
         em.remove(cr);
         em.getTransaction().commit();
-       
+
     }
 
     public Crayon getCrayonsById(int id) {
-       
+
         Crayon res = em.find(Crayon.class, id);
         return res;
     }
 
     public List<Crayon> getAllCrayons() {
-        
+
         TypedQuery<Crayon> query = em.createQuery("SELECT c FROM Crayon c", Crayon.class);
         List<Crayon> res = query.getResultList();
         return res;
     }
 
     public List<Boite> getAllBoites() {
-       
+
         TypedQuery<Boite> query = em.createQuery("SELECT b FROM Boite b", Boite.class);
         List<Boite> res = query.getResultList();
         return res;
@@ -157,14 +158,13 @@ public class Services {
         return res;
 
     }
-    
-     public void updateActeRadiologiqueImage( ActeRadiologique act, ImageRadiologique img)
-     {
-         act.images.add(img);
-         em.getTransaction().begin();
-         em.persist(act);
-         em.getTransaction().commit();
-     }
+
+    public void updateActeRadiologiqueImage(ActeRadiologique act, ImageRadiologique img) {
+        act.images.add(img);
+        em.getTransaction().begin();
+        em.persist(act);
+        em.getTransaction().commit();
+    }
 
     //Admission
     public Admission newAdmission(String IPP) {
@@ -192,19 +192,16 @@ public class Services {
         em.createQuery("DELETE FROM Admission").executeUpdate();
         em.getTransaction().commit();
     }
-    
-    public List<ImageRadiologique> getImagesByAdmission(String ipp)
-    {
+
+    public List<ImageRadiologique> getImagesByAdmission(String ipp) {
         TypedQuery<ActeRadiologique> query = em.createQuery("SELECT a FROM ActeRadiologique a JOIN a.admission adm WHERE adm.admissionIPP= :ipp", ActeRadiologique.class).setParameter("ipp", ipp);
         List<ActeRadiologique> res = query.getResultList();
         List<ImageRadiologique> img = new ArrayList<>();
-        for (ActeRadiologique act : res)
-         {
-             for(ImageRadiologique im : act.getImages())
-             {
-                 img.add(im);
-             }
-         }
+        for (ActeRadiologique act : res) {
+            for (ImageRadiologique im : act.getImages()) {
+                img.add(im);
+            }
+        }
         return img;
     }
 
@@ -228,6 +225,15 @@ public class Services {
         TypedQuery<Appareil> query = em.createQuery("SELECT a FROM Appareil a", Appareil.class);
         List<Appareil> res = query.getResultList();
         return res;
+    }
+
+    public void removeAppareil(int id) {
+
+        Appareil ap = em.find(Appareil.class, id);
+        em.getTransaction().begin();
+        em.remove(ap);
+        em.getTransaction().commit();
+
     }
 
     public void deleteAllAppareil() {
@@ -265,8 +271,6 @@ public class Services {
         em.createQuery("DELETE FROM ImageRadiologique").executeUpdate();
         em.getTransaction().commit();
     }
-    
-   
 
     //NomemclatureCCAM
     public NomemclatureCCAM newNomemclatureCCAM(String NomemclatureCCAMLibelle, String nomenclatureCCAMCode) {
