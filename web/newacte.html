@@ -19,18 +19,17 @@ and open the template in the editor.
     </head>   
     <body>
         <form>
-            <SELECT name="Admission" size="1" ng-repeat='ad in ctrl.admission'>
-                <OPTION>{{ ad.admissionIEP }}
-            </SELECT>
-            <br>
-            <SELECT name="Appareil" size="1" ng-repeat='ap in ctrl.appareil'>
-                <OPTION>{{ ap.appareil_appareilId }}
-            </SELECT>
-            <br>
-            <SELECT name="NomenclatureCCAM" size="1" ng-repeat='no in ctrl.nomen'>
-                <OPTION>{{ no.nomenclatureCCAM_nomenclatureCCAMId }}
-            </SELECT>
-            <br>
+            <h3> Création d'un acte de radiologie </h3>
+
+            <input type="submit" ng-click="ctrl.update()" value="Créer un acte de radiologie" />
+
+            <div ng-show="ctrl.act.acteRadiologiquePACS">
+                Création du nouvel acte de radiologie d'identifiant {{ctrl.act.acteRadiologiquePACS}} effectué.
+            </div>
+
+            <br/>
+
+            <a href="#/">Retour</a>
         </form>
     </body>
 </html>

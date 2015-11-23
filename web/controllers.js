@@ -1,3 +1,5 @@
+/* global angular */
+
 //var project = angular.module('monApp');
 
 angular.module('monApp').controller('ActeRadiologiqueController', ['ActeRadiologique',
@@ -6,14 +8,13 @@ angular.module('monApp').controller('ActeRadiologiqueController', ['ActeRadiolog
     }
 ]);
 
-angular.module('monApp').controller('ActeRadiologiqueNewController', ['ActeRadiologique','Admission','Appareil','NomemclatureCCAM',
-    function (ActeRadiologique,Admission,Appareil,NomemclatureCCAM) {
-        this.acte = new ActeRadiologique();
-        this.admission = Admission.query();
-        this.appareil = Appareil.query();
-        this.nomen = NomemclatureCCAM.query();
+angular.module('monApp').controller('ActeRadiologiqueNewController', ['ActeRadiologique',
+    function (ActeRadiologique) {
+        this.act = new ActeRadiologique();
         this.update = function () {
-            this.acte.$save();
+            // appel POST asynchrone au service web sur /crayons
+            this.act.$save();
+
         };
     }]);
 
@@ -30,12 +31,12 @@ angular.module('monApp').controller('ActeRadiologiqueEditController', ['$routePa
 angular.module('monApp').controller('AppareilController', ['Appareil',
     function (Appareils) {
         console.log("ca passe");
-        this.appareil = Appareils.query();
-        this.delete = function (appa) {
+        this.appa = Appareils.query();
+        this.delete = function (appar) {
             // appel DELETE asynchrone au service web sur /crayons/{id}
             //cr.$delete();
             console.log("suppression");
-            Appareils.delete(appa);
+            Appareils.delete(appar);
             console.log("suppression2");
             // remet à jour le tableau des crayons en suprimant l'élément effacé
             //this.appareil.splice(this.appareil.indexOf(appa), 1);
