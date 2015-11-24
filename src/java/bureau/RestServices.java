@@ -137,6 +137,15 @@ public class RestServices {
         //TODO return proper representation object
         return serv.getAllAppareil();
     }
+    
+    //Obtenir toutes les nomenclature
+    @GET
+    @Path("nomemclatureCCAM")
+    @Produces("application/json")
+    public List<NomemclatureCCAM> getNomemclatureCCAM() {
+        //TODO return proper representation object
+        return serv.getAllNomemclatureCCAM();
+    }
    
     
     //Créer un acte radiologique OK
@@ -159,6 +168,17 @@ public class RestServices {
         serv.newAppareil(appa.getAppareilLibelle(), appa.getAppareilModalite());
         System.out.println("L'appareil "+appa.getAppareilLibelle()+"a été ajouté ");
         return appa;
+    }
+    
+    //Créer une nomenclature CCAM
+    @POST
+    @Path("nomemclatureCCAM")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces("application/json")
+    public NomemclatureCCAM newNomemclature(NomemclatureCCAM no){
+        serv.newNomemclatureCCAM(no.getNomenclatureCCAMLibelle(), no.getNomemclatureCCAMCode());
+        System.out.println("La nomemclature "+no.getNomenclatureCCAMLibelle()+"a été ajoutée ");
+        return no;
     }
     
     //Supprimer un appareil

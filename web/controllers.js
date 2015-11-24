@@ -90,3 +90,24 @@ angular.module('monApp').controller('CrayonEditController', ['$routeParams', 'Cr
         this.cr.$save();
         $location.path("/");
     }]);
+
+angular.module('monApp').controller('NomemclatureCCAMController', ['NomemclatureCCAM',
+    function (NomemclatureCCAM) {
+        this.nomemclatureccam = NomemclatureCCAM.query();
+        this.delete = function (no) {
+            // appel DELETE asynchrone au service web sur /crayons/{id}
+            //cr.$delete();
+            NomemclatureCCAM.delete(no);
+            // remet à jour le tableau des crayons en suprimant l'élément effacé
+            this.nomemclatureccam.splice(this.nomemclatureccam.indexOf(no), 1);
+        };
+    }
+]);
+
+angular.module('monApp').controller('NomemclatureCCAMNewController', ['NomemclatureCCAM',
+    function (NomemclatureCCAM) {
+        this.nomemclatureccam = new NomemclatureCCAM();
+        this.update = function () {
+            this.nomemclatureccam.$save();
+        };
+    }]);

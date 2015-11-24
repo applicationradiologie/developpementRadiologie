@@ -32,5 +32,13 @@ angular.module('monApp').config(['$routeProvider', function routeConfig($routePr
         controller: "CrayonsController as ctrl",
         templateUrl: 'listeCrayon.html'    
     })
+     .when('/listeNomenc', {
+        controller: "NomemclatureCCAMController as ctrl",
+        templateUrl: 'listeNomemclatureCCAM.html'    
+    })
+     .when('/newNomenc', {
+        controller: "NomemclatureCCAMNewController as ctrl",
+        templateUrl: 'newNomemclatureCCAM.html'    
+    })
     .otherwise({ redirectTo: '/'});
 }]);

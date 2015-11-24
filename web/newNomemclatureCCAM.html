@@ -6,9 +6,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Nouvel Acte</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Nouvelle Nomenclature</title>
         <meta charset="UTF-8">
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.js"></script>
@@ -22,18 +20,34 @@ and open the template in the editor.
         <h1>Radio Tout Faire</h1>
         <i>Le module pour le service d'imagerie</i>
     </center>
+    <hr/>
     <form>
-        <h3> Création d'un acte de radiologie </h3>
+        <br/><br/>
+        <fieldset>
+            <legend>Nouvelle Nomenclature</legend> 
+            <table>
+                <tr>
+                    <td>Code</td>
+                    <td><input type="text" name="Code" ng-model="ctrl.nomemclatureccam.nomemclatureCCAMCode"/></td>
+                </tr>
+                <tr>
+                    <td>Libellé</td>
+                    <td><input type="text" name="libelleNomemclature" ng-model="ctrl.nomemclatureccam.nomenclatureCCAMLibelle"></td>
+                </tr>
 
-        <input type="submit" ng-click="ctrl.update()" value="Créer un acte de radiologie" />
+            </table>
 
-        <div ng-show="ctrl.act.acteRadiologiquePACS">
-            Création du nouvel acte de radiologie d'identifiant {{ctrl.act.acteRadiologiquePACS}} effectué.
-        </div>
 
-        <br/>
+            <br/><br/>
 
-        <a href="#/">Retour</a>
+            <input type="submit" value="Annuler" ng-click="" />
+            <input type="submit" value="Enregistrer" ng-click="ctrl.update()" />
+
+        </fieldset>
+
+
+
+
     </form>
 </body>
 </html>

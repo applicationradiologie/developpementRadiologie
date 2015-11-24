@@ -6,7 +6,7 @@
 +-->
 <html>
     <head>
-        <title>Liste des appareils</title>
+        <title>Liste des nomenclatureCCAM</title>
         <meta charset="UTF-8">
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.js"></script>
@@ -24,14 +24,15 @@
         <tr>
             <th> Id </th>
             <th> Libelle </th>
-            <th> Modalité </th>
-        <tr ng-repeat='ap in ctrl.appa'>
-            <td> {{ ap.appareilId}} </td>
-            <td> {{ ap.appareilLibelle}} </td>
-            <td> {{ ap.appareilModalite}} </td>
-            <td> <a ng-href="#/appareilEdition/{{ap.appareilId}}"/> Editer </a>
-            <td> <input type="button" value="Supprimer" ng-click="ctrl.delete(ap)"/> 
+            <th> Code </th>
+        <tr ng-repeat='no in ctrl.nomemclatureccam'>
+            <td> {{ no.nomenclatureCCAMId}} </td>
+            <td> {{ no.nomenclatureCCAMLibelle}} </td>
+            <td> {{ no.nomemclatureCCAMCode}} </td>
+            <td> <a ng-href="#/nomencEdition/{{no.nomenclatureCCAMId}}"/> Editer </a>
+            <td> <input type="button" value="Supprimer" ng-click="ctrl.delete(no)"/> 
         </tr>
     </table>
+    <a ng-href="#/newNomenc"><input type="button" value="Créer une Nomenclature" /></a>
 </body>
 </html>
