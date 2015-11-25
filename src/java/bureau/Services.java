@@ -227,9 +227,9 @@ public class Services {
         return res;
     }
 
-    public void removeAppareil(int id) {
+    public void removeAppareil(Long appareilId) {
 
-        Appareil ap = em.find(Appareil.class, id);
+        Appareil ap = em.find(Appareil.class, appareilId);
         em.getTransaction().begin();
         em.remove(ap);
         em.getTransaction().commit();
@@ -270,6 +270,15 @@ public class Services {
         em.getTransaction().begin();
         em.createQuery("DELETE FROM ImageRadiologique").executeUpdate();
         em.getTransaction().commit();
+    }
+    
+     public void removeImageRadiologique(Long imageRadiologiqueId) {
+
+        ImageRadiologique ap = em.find(ImageRadiologique.class, imageRadiologiqueId);
+        em.getTransaction().begin();
+        em.remove(ap);
+        em.getTransaction().commit();
+
     }
 
     //NomemclatureCCAM

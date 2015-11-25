@@ -131,7 +131,7 @@ public class RestServices {
     
     //Obtenir tous les appareils
     @GET
-    @Path("appareils")
+    @Path("appareil")
     @Produces("application/json")
     public List<Appareil> getAppareils() {
         //TODO return proper representation object
@@ -204,11 +204,20 @@ public class RestServices {
     
     //Supprimer un appareil
     @DELETE
-    @Path("appareil/{appareilId}")
-    public Response removeAppareil(@PathParam("appareilId") int id) {
-        serv.removeAppareil(id);
+    @Path("appareil/{appa}")
+    public Response removeAppareil(@PathParam("appa") Long appareilId) {
+        serv.removeAppareil(appareilId);
         return Response.status(200).build();
     }
+    
+    //Supprimer une image
+    @DELETE
+    @Path("imageradiologique/{im}")
+    public Response removeimageradiologique(@PathParam("im") Long imageRadiologiqueId) {
+        serv.removeImageRadiologique(imageRadiologiqueId);
+        return Response.status(200).build();
+    }
+    
     
     //Ajouter une image à un acte --> LE coupable !!!!!!!!!!!!
     /*

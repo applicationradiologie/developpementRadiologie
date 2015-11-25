@@ -16,38 +16,31 @@ and open the template in the editor.
         <script src="services.js"></script>
     </head>   
     <body>
-    <center>
-        <h1>Radio Tout Faire</h1>
-        <i>Le module pour le service d'imagerie</i>
-    </center>
-    <hr/>
-    <form>
-        <br/><br/>
-        <fieldset>
-            <legend>Nouvel Appareil</legend> 
-            <table>
-                <tr>
-                    <td>Libellé</td>
-                    <td><input type="text" name="libelleAppareil" ng-model="ctrl.appa.appareilLibelle"></td>
-                </tr>
-                <tr>
-                    <td>Modalité d'imagerie</td>
-                    <td><input type="text" name="modaliteImagerie" ng-model="ctrl.appa.appareilModalite"/></td>
-                </tr>
-            </table>
-
-
-            <br/><br/>
-
-            <input type="submit" value="Annuler" ng-click="" />
-            <input type="submit" value="Enregistrer" ng-click="ctrl.update()" />
-
-        </fieldset>
+        <a href="#/"><button class="button cycle-button">←</button></a>
+        <h3>Ajout d'un nouvel appareil</h3>
+        <br/>
         <a ng-href="#/listeappareil"/><p>Liste des appareils</p></a>
-
-
-
-
-</form>
+           <div class="grid">
+                <div class="row cells2">
+                    <div class="cell">
+                        <label>Libellé</label>
+                        <div class="input-control text full-size">
+                            <input type="text" style="width:50%" name="libelleAppareil" placeholder="Ex. Appareil Salle B205" ng-model="ctrl.appa.appareilLibelle">
+                        </div>
+                    </div>
+                </div>
+                <div class="row cells2">
+                    <div class="cell">
+                        <label>Modalité d'imagerie</label>
+                        <div class="input-control text full-size">
+                            <input type="text" style="width:50%" name="modaliteImagerie" placeholder="Ex. IRM" ng-model="ctrl.appa.appareilModalite"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br/><br/>
+         
+            <a href="#/"><input type="submit" value="Annuler" ng-click=""/></a>
+            <input type="submit" value="Enregistrer" ng-click="ctrl.update()" />
 </body>
 </html>

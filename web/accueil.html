@@ -12,10 +12,7 @@
         <script src="services.js"></script>
     </head>   
     <body>
-
-        <h1 style="color:white">Radio Tout Faire</h1>
-        <h4 style="color:white"> Le module pour le service d'imagerie </h4>
-        <div style="margin-top:2%">
+        
 
             <div style="margin-left:10%; margin-right:55%" >
                 <h4 style="color:white">Gestion des Actes</h4>
@@ -34,7 +31,7 @@
                     </div>
                 </a>
 
-                <a ng-href="#/newappareil">
+                <a ng-href="#/rechercheracte">
                     <div class="tile fg-white" data-role="tile">
                         <div class="tile-content slide-left-2">
                             <div class="slide">
@@ -63,9 +60,9 @@
                 </a>
             </div>
 
-            <div style="margin-left:30%; margin-right:10%" >
+            <div style="margin-left:35%; margin-right:10%;  margin-top:-1.5%" >
                 <h4 style="color:white">Gestion des Référentiels</h4>
-                
+
                 <a ng-href="#/newappareil">
                     <div class="tile fg-white" data-role="tile">
                         <div class="tile-content slide-left-2">
@@ -80,40 +77,36 @@
                     </div>
                 </a>
 
-                <div class="tile bg-cyan fg-white" data-role="tile">
-                    <div class="tile-content iconic">
-                        <span class="icon mif-envelop"></span>
-                        <span class="tile-badge bg-darkRed">5</span>
-                        <span class="tile-label">Mail</span>
+                <a ng-href="#/listeNomenc">
+                    <div class="tile fg-white bg-transparent" data-role="tile">
+                        <div class="tile-content slide-down-2">
+                            <div class="slide">
+                                <img src="https://cdn.harper-adams.ac.uk/image/page/large/120720-The-word-Reference-in-a-dictionary279446.jpg" data-role="fitImage" data-format="fill">
+                            </div>
+                            <div class="slide-over bg-darkViolet text-small padding10">
+                                Consulter ou alimenter la Nomenclature CCAM.
+                            </div>
+                            <div class="tile-label">Nomenclature CCAM</div>
+                        </div>
                     </div>
-                </div>
+                </a>
 
-                <div class="tile-wide bg-orange fg-white" data-role="tile">
-                    <div class="tile-content iconic">
-                        <span class="icon mif-cloud"></span>
-                        <span class="tile-label">Cloud service</span>
+                <a ng-href="#/images">
+                    <div class="tile-wide fg-white" data-role="tile">
+                        <div class="tile-content slide-right">
+                            <div class="slide">
+                                <img src="http://www.police-scientifique.com/wp-content/uploads/2012/01/irm-corps-entier-550px.jpg" data-role="fitImage" data-format="hd">
+                            </div>
+                            <div class="slide-over op-yellow text-small padding10">
+                                Cliquez ici pour consulter la liste des images.
+                            </div>
+                            <div class="tile-label">Liste Images</div>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
 
-        </div>
-
-
-        <ul class="listeBouton">
-            <li><a ng-href="#/newacte">	<input type="button" class="bouton17" value="Créer Acte"/>							</a></li>
-            <li><a ng-href="#/newappareil">				<input type="button" class="bouton18" value="Créer Appareil"/>						</a></li>
-        </ul>
-
-        <ul class="listeBouton">
-            <li><a ng-href="#/rechercheradmission">				<input type="button" class="bouton19" value="Recherche Asmission" ng-click=""/>		</a></li>
-            <li><a ng-href="#/rechercheracte">				<input type="button" class="bouton20" value="Recherche Actes" ng-click=""/>			</a></li>
-        </ul>
-        <ul class="listeBouton">
-            <li><a ng-href="#/listeNomenc">				<input type="button" class="bouton21" value="Liste des Nomenclature CCAM" ng-click=""/>		</a></li>
-            <li><a ng-href="#/rechercheracte">				<input type="button" class="bouton22" value="??????" ng-click=""/>			</a></li>
-        </ul>
-
-        <a ng-href="#/cr"><p>Les crayons</p></a>
+       
     </body>
 </html>
 

@@ -18,22 +18,17 @@ and open the template in the editor.
         <script src="services.js"></script>
     </head>   
     <body>
-    <center>
-        <h1>Radio Tout Faire</h1>
-        <i>Le module pour le service d'imagerie</i>
-    </center>
-    <form>
-        <h3> Création d'un acte de radiologie </h3>
+        <a href="#/"><button class="button cycle-button">←</button></a>
+        <form>
+            <h3> Création d'un acte de radiologie </h3>
 
-        <input type="submit" ng-click="ctrl.update()" value="Créer un acte de radiologie" />
+            <input type="submit" ng-click="ctrl.update()" value="Créer un acte de radiologie" />
 
-        <div ng-show="ctrl.act.acteRadiologiquePACS">
-            Création du nouvel acte de radiologie d'identifiant {{ctrl.act.acteRadiologiquePACS}} effectué.
-        </div>
+            <div ng-show="ctrl.act.acteRadiologiquePACS">
+                Création du nouvel acte de radiologie d'identifiant {{ctrl.act.acteRadiologiquePACS}} effectué.
+            </div>
 
-        <br/>
-
-        <a href="#/">Retour</a>
-    </form>
-</body>
+            <br/>
+        </form>
+    </body>
 </html>

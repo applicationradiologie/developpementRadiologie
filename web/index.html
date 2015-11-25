@@ -124,32 +124,38 @@
     <body ng-app="monApp" class="bg-dark" style='color:white'>
         <div class="tile-container bg-dark">
             <div class="app-bar">
-                <a class="app-bar-element" href="">Home</a>
+                <a class="app-bar-element" ng-href="#/">Home</a>
                 <span class="app-bar-divider"></span>
                 <ul class="app-bar-menu">
-                    <li><a href="">Menu</a></li>
                     <li>
-                        <a href="" class="dropdown-toggle">Products</a>
+                        <a href="" class="dropdown-toggle">Menu</a>
                         <ul class="d-menu" data-role="dropdown">
-                            <li><a href="">Windows 10</a></li>
-                            <li><a href="">Spartan</a></li>
-                            <li><a href="">Outlook</a></li>
-                            <li><a href="">Office 2015</a></li>
-                            <li class="divider"></li>
-                            <li><a href="" class="dropdown-toggle">Other Products</a>
+                            <li><a href="" class="dropdown-toggle">Gestion des Actes</a>
                                 <ul class="d-menu" data-role="dropdown">
-                                    <li><a href="">Internet Explorer 10</a></li>
-                                    <li><a href="">Skype</a></li>
-                                    <li><a href="">Surface</a></li>
+                                    <li><a ng-href="#/newacte">Créer Acte</a></li>
+                                    <li><a ng-href="#/rechercheradmission">Rechercher Admission</a></li>
+                                    <li><a ng-href="#/rechercheracte">Rechercher Acte</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="" class="dropdown-toggle">Gestion des Références</a>
+                                <ul class="d-menu" data-role="dropdown">
+                                    <li><a ng-href="#/newappareil">Créer Appareil</a></li>
+                                    <li><a ng-href="#/listeNomenc">Nomenclature CCAM</a></li>
+                                    <li><a ng-href="#/images">Liste Images</a></li>
                                 </ul>
                             </li>
                         </ul>
                     </li>
-                    <li><a href="">Support</a></li>
-                    <li><a href="">Help</a></li>
+                    <li><a href="sujet.pdf">Sujet</a></li>
+                    <li><a href="">Contact</a></li>
+                    <li><a href="">Aide</a></li>
                 </ul>
             </div>
-            <div ng-view ></div>
+            <h1 style="color:white">Radio Tout Faire</h1>
+            <h4 style="color:white"> Le module pour le service d'imagerie </h4>
+            <div style="margin-top:5%">
+                <div style="margin-left:8%" ng-view ></div>
+            </div>
         </div>
     </body>
 

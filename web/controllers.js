@@ -32,11 +32,11 @@ angular.module('monApp').controller('AppareilController', ['Appareil',
     function (Appareils) {
         console.log("ca passe");
         this.appa = Appareils.query();
-        this.delete = function (appar) {
+        this.delete = function (ap) {
             // appel DELETE asynchrone au service web sur /crayons/{id}
             //cr.$delete();
             console.log("suppression");
-            Appareils.delete(appar);
+            Appareils.delete(ap);
             console.log("suppression2");
             // remet à jour le tableau des crayons en suprimant l'élément effacé
             //this.appareil.splice(this.appareil.indexOf(appa), 1);
