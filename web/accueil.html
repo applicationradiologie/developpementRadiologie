@@ -12,27 +12,109 @@
         <script src="services.js"></script>
     </head>   
     <body>
-    <center>
-        <h1>Radio Tout Faire</h1>
-        <i>Le module pour le service d'imagerie</i>
-    </center>
-    <hr/>
-    <ul class="listeBouton">
-        <li><a ng-href="#/newacte">	<input type="button" class="bouton17" value="Créer Acte"/>							</a></li>
-        <li><a ng-href="#/newappareil">				<input type="button" class="bouton18" value="Créer Appareil"/>						</a></li>
-    </ul>
 
-    <ul class="listeBouton">
-        <li><a ng-href="#/rechercheradmission">				<input type="button" class="bouton19" value="Recherche Asmission" ng-click=""/>		</a></li>
-        <li><a ng-href="#/rechercheracte">				<input type="button" class="bouton20" value="Recherche Actes" ng-click=""/>			</a></li>
-    </ul>
-    <ul class="listeBouton">
-        <li><a ng-href="#/listeNomenc">				<input type="button" class="bouton21" value="Liste des Nomenclature CCAM" ng-click=""/>		</a></li>
-        <li><a ng-href="#/rechercheracte">				<input type="button" class="bouton22" value="??????" ng-click=""/>			</a></li>
-    </ul>
-    
-    <a ng-href="#/cr"><p>Les crayons</p></a>
-</body>
+        <h1 style="color:white">Radio Tout Faire</h1>
+        <h4 style="color:white"> Le module pour le service d'imagerie </h4>
+        <div style="margin-top:2%">
+
+            <div style="margin-left:10%; margin-right:55%" >
+                <h4 style="color:white">Gestion des Actes</h4>
+
+                <a ng-href="#/newacte">
+                    <div class="tile fg-white" data-role="tile">
+                        <div class="tile-content slide-down">
+                            <div class="slide">
+                                <img src="http://tpe-rayonsx-imagerie-medicale.e-monsite.com/medias/album/images/main-1.jpg?fx=r_550_550" data-role="fitImage" data-format="square">
+                            </div>
+                            <div class="slide-over op-cyan text-small padding10">
+                                Cliquez icic pour créer un acte de radiologie.
+                            </div>
+                            <div class="tile-label">Créer Acte</div>
+                        </div>
+                    </div>
+                </a>
+
+                <a ng-href="#/newappareil">
+                    <div class="tile fg-white" data-role="tile">
+                        <div class="tile-content slide-left-2">
+                            <div class="slide">
+                                <img src="http://www.has-sante.fr/portail/upload/docs/image/jpeg/2015-10/examen_radiographie_medecin_188047682.jpg.associated/th-589x1500-examen_radiographie_medecin_188047682.jpg.jpg" data-role="fitImage" data-format="fill">
+                            </div>
+                            <div class="slide-over op-red text-small padding10">
+                                Cliquez ici pour rechercher des actes d'imagerie.
+                            </div>
+                            <div class="tile-label">Rechercher Acte</div>
+                        </div>
+                    </div>
+                </a>
+
+                <a ng-href="#/rechercheradmission">
+                    <div class="tile-wide fg-white" data-role="tile">
+                        <div class="tile-content slide-up-2">
+                            <div class="slide">
+                                <img src="http://www.photocase.com/stock-photos/176381-stock-photo-old-bookshop-book-search-paper-table.jpg" data-role="fitImage" data-format="fill">
+                            </div>
+                            <div class="slide-over bg-orange text-small padding10">
+                                Cliquez ici pour rechercher facilement une admission.
+                            </div>
+                            <div class="tile-label">Rechercher Asmission</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div style="margin-left:30%; margin-right:10%" >
+                <h4 style="color:white">Gestion des Référentiels</h4>
+                
+                <a ng-href="#/newappareil">
+                    <div class="tile fg-white" data-role="tile">
+                        <div class="tile-content slide-left-2">
+                            <div class="slide">
+                                <img src="http://www.leblogmedical.fr/wp-content/uploads/2012/06/20120605-234429.jpg" data-role="fitImage" data-format="fill">
+                            </div>
+                            <div class="slide-over op-green text-small padding10">
+                                Cliquez ici pour créer un nouvel appareil.
+                            </div>
+                            <div class="tile-label">Créer Appareil</div>
+                        </div>
+                    </div>
+                </a>
+
+                <div class="tile bg-cyan fg-white" data-role="tile">
+                    <div class="tile-content iconic">
+                        <span class="icon mif-envelop"></span>
+                        <span class="tile-badge bg-darkRed">5</span>
+                        <span class="tile-label">Mail</span>
+                    </div>
+                </div>
+
+                <div class="tile-wide bg-orange fg-white" data-role="tile">
+                    <div class="tile-content iconic">
+                        <span class="icon mif-cloud"></span>
+                        <span class="tile-label">Cloud service</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <ul class="listeBouton">
+            <li><a ng-href="#/newacte">	<input type="button" class="bouton17" value="Créer Acte"/>							</a></li>
+            <li><a ng-href="#/newappareil">				<input type="button" class="bouton18" value="Créer Appareil"/>						</a></li>
+        </ul>
+
+        <ul class="listeBouton">
+            <li><a ng-href="#/rechercheradmission">				<input type="button" class="bouton19" value="Recherche Asmission" ng-click=""/>		</a></li>
+            <li><a ng-href="#/rechercheracte">				<input type="button" class="bouton20" value="Recherche Actes" ng-click=""/>			</a></li>
+        </ul>
+        <ul class="listeBouton">
+            <li><a ng-href="#/listeNomenc">				<input type="button" class="bouton21" value="Liste des Nomenclature CCAM" ng-click=""/>		</a></li>
+            <li><a ng-href="#/rechercheracte">				<input type="button" class="bouton22" value="??????" ng-click=""/>			</a></li>
+        </ul>
+
+        <a ng-href="#/cr"><p>Les crayons</p></a>
+    </body>
 </html>
 
 
