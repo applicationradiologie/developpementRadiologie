@@ -243,7 +243,7 @@ public class Services {
     }
 
     //Image Radiologique
-    public ImageRadiologique newImageRadiologique(String imageRadiologiqueURL, String imageRadiologiqueFormat, String imageRadiolgoquePoids, String imageRadiologiqueLibelle) {
+    public ImageRadiologique newImageRadiologique(String imageRadiologiqueFormat, String imageRadiologiqueLibelle, String imageRadiolgoquePoids, String imageRadiologiqueURL) {
         ImageRadiologique a = new ImageRadiologique();
         a.setImageRadiologiqueURL(imageRadiologiqueURL);
         a.setImageRadiologiqueFormat(imageRadiologiqueFormat);

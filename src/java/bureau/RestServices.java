@@ -146,6 +146,16 @@ public class RestServices {
         //TODO return proper representation object
         return serv.getAllNomemclatureCCAM();
     }
+    
+    //Obtenir toutes les images
+     //Obtenir toutes les nomenclature
+    @GET
+    @Path("imageradiologique")
+    @Produces("application/json")
+    public List<ImageRadiologique> getImageRadiologique() {
+        //TODO return proper representation object
+        return serv.getAllImageRadiologique();
+    }
    
     
     //Créer un acte radiologique OK
@@ -179,6 +189,17 @@ public class RestServices {
         serv.newNomemclatureCCAM(no.getNomenclatureCCAMLibelle(), no.getNomemclatureCCAMCode());
         System.out.println("La nomemclature "+no.getNomenclatureCCAMLibelle()+"a été ajoutée ");
         return no;
+    }
+    
+     //Créer une image
+    @POST
+    @Path("imageradiologique")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces("application/json")
+    public ImageRadiologique newImageRadiologique(ImageRadiologique im){
+        serv.newImageRadiologique(im.getImageRadiologiqueFormat(), im.getImageRadiologiqueLibelle(), im.getImageRadiologiquePoids(), im.getImageRadiologiqueURL());
+        System.out.println("L'image "+im.getImageRadiologiqueLibelle()+"a été ajoutée ");
+        return im;
     }
     
     //Supprimer un appareil

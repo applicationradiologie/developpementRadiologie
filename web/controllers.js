@@ -111,3 +111,24 @@ angular.module('monApp').controller('NomemclatureCCAMNewController', ['Nomemclat
             this.nomemclatureccam.$save();
         };
     }]);
+
+angular.module('monApp').controller('ImagesController', ['ImageRadiologique',
+    function (ImageRadiologique) {
+        this.imageradiologique = ImageRadiologique.query();
+        this.delete = function (im) {
+            // appel DELETE asynchrone au service web sur /crayons/{id}
+            //cr.$delete();
+            ImageRadiologique.delete(im);
+            // remet à jour le tableau des crayons en suprimant l'élément effacé
+            this.imageradiologique.splice(this.imageradiologique.indexOf(im), 1);
+        };
+    }
+]);
+
+angular.module('monApp').controller('ImageNewController', ['ImageRadiologique',
+    function (ImageRadiologique) {
+        this.imageradiologique = new ImageRadiologique();
+        this.update = function () {
+            this.imageradiologique.$save();
+        };
+    }]);

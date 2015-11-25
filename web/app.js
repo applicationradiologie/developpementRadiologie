@@ -40,5 +40,13 @@ angular.module('monApp').config(['$routeProvider', function routeConfig($routePr
         controller: "NomemclatureCCAMNewController as ctrl",
         templateUrl: 'newNomemclatureCCAM.html'    
     })
+     .when('/images', {
+        controller: "ImagesController as ctrl",
+        templateUrl: 'listeimages.html'    
+    })
+     .when('/newImage', {
+        controller: "ImageNewController as ctrl",
+        templateUrl: 'newimage.html'    
+    })
     .otherwise({ redirectTo: '/'});
 }]);

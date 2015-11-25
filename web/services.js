@@ -22,3 +22,6 @@ angular.module('monApp').factory('NomemclatureCCAM', ['$resource', function ($re
         return $resource('/bureau/webresources/generic/nomemclatureCCAM/:no', {no: '@nomenclatureCCAMId'});
     }]);
 
+angular.module('monApp').factory('ImageRadiologique', ['$resource', function ($resource) {
+        return $resource('/bureau/webresources/generic/imageradiologique/:im', {im: '@imageRadiologiqueId'});
+    }]);
