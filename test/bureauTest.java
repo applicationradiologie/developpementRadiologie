@@ -5,13 +5,14 @@
  */
 
 import bureau.ActeRadiologique;
+import static bureau.ActeRadiologique_.CCAM;
 import bureau.Admission;
 import bureau.Appareil;
 import bureau.Boite;
 import bureau.Crayon;
 import bureau.DatabaseUtils;
 import bureau.ImageRadiologique;
-import bureau.NomemclatureCCAM;
+import bureau.CCAM;
 import bureau.Services;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -134,17 +135,24 @@ public class bureauTest {
     public void NomemclatureCCAM() {
         //clean();
         Services serv = new Services(DatabaseUtils.fact());
-        NomemclatureCCAM nc = serv.newNomemclatureCCAM("Radiologie du thorax", "ZBQK002");
+        CCAM nc = serv.newCCAM("Radiologie du thorax", "ZBQK002");
         assertNotNull(nc);
-        nc = serv.newNomemclatureCCAM("Radiographie de labdomen sans préparation", "ZCQK002");
+        nc = serv.newCCAM("Radiographie de labdomen sans préparation", "ZCQK002");
         assertNotNull(nc);
-        nc = serv.newNomemclatureCCAM("Scannographie des vaisseaux encéphalique", "EAQH002");
+        nc = serv.newCCAM("Scannographie des vaisseaux encéphalique", "EAQH002");
         assertNotNull(nc);
-        nc = serv.newNomemclatureCCAM("Scannographie des vaisseaux cervicaux", "EBQH006");
+        nc = serv.newCCAM("Scannographie des vaisseaux cervicaux", "EBQH006");
         assertNotNull(nc);
-        nc = serv.newNomemclatureCCAM("Restitution tridimensionnelle des images acquises par remnographie", "ZZQN002");
+        nc = serv.newCCAM("Restitution tridimensionnelle des images acquises par remnographie", "ZZQN002");
         assertNotNull(nc);
-        nc = serv.newNomemclatureCCAM("Remnographie fonctionnelle du cerveau pour étude des fonctions motrices", "AAQN004");
+        nc = serv.newCCAM("Remnographie fonctionnelle du cerveau pour étude des fonctions motrices", "AAQN004");
+        assertNotNull(nc);
+    }
+
+    @Test
+    public void CCAM() {
+        Services serv = new Services(DatabaseUtils.fact());
+        CCAM nc = serv.newCCAM("Radiologie ", "ZK002");
         assertNotNull(nc);
     }
 
@@ -152,13 +160,9 @@ public class bureauTest {
     public void ImageRadiologique() {
         //clean();
         Services serv = new Services(DatabaseUtils.fact());
-        ImageRadiologique im = serv.newImageRadiologique("http://www.image-drole.eu/wp-content/uploads/2010/03/coca.jpg", "JPG", "34KoB", "Bouteille Rectum");
+        ImageRadiologique im = serv.newImageRadiologique("JPG", "Bouteille ", "34KoB", "http://www.image-drole.eu/wp-content/uploads/2010/03/coca.jpg");
         assertNotNull(im);
-        im = serv.newImageRadiologique("http://www.irmdole.fr/imagesUp/galerie/23.jpg", "DICOM", "80KoB", "Cerveau");
-        assertNotNull(im);
-        im = serv.newImageRadiologique("http://radiologie-drome-ardeche.fr/wp/wp-content/uploads/2013/05/radio-abdomen-sans-preparation.jpg", "DICOM", "96KoB", "Abdomen");
-        assertNotNull(im);
-        im = serv.newImageRadiologique("http://www.info-radiologie.ch/pouteau-colles/fullsize/pouteau-colles-15_fs.jpg", "DICOM", "43KoB", "3D");
+        im = serv.newImageRadiologique("JPG", "Cerveau ", "500KoB", "http://img.medicalexpo.fr/images_me/photo-g/69419-8267635.jpg");
         assertNotNull(im);
 
     }
@@ -194,34 +198,33 @@ public class bureauTest {
         ImageRadiologique im4 = serv.newImageRadiologique("http://www.info-radiologie.ch/pouteau-colles/fullsize/pouteau-colles-15_fs.jpg", "DICOM", "43KoB", "3D");
         liste.add(im4);
         //Creation de l'admission
-        
+
         Admission adm = serv.newAdmission("4454fd1fdsfsd");
         Long iep = adm.getAdmissionIEP();
         //Creation de l'appareil
         Appareil ap = serv.newAppareil("Appareil service neurologie", "IRM");
         //Nomemclature
-        NomemclatureCCAM nc = serv.newNomemclatureCCAM("Restitution", "ZZQN002");
-        
+        CCAM nc = serv.newCCAM("Restitution", "ZZQN002");
+
         //Creation de l'acte radiologique
         Date d = new SimpleDateFormat("dd/MM/yyyy").parse("14/10/2015");
         ActeRadiologique a = serv.newActeRadiologique(d, adm, liste, ap, nc);
         assertNotNull(a);
-        
+
         //Test de récuperation l'acte radiogique d'une admission
         List<ActeRadiologique> actes = serv.getActeRadiologiqueByAdmission("4454fd1fdsfsd");
-        assert(!actes.isEmpty());
-        assert(actes.get(0).getAdmission().getAdmissionIEP()==iep);
-        
+        assert (!actes.isEmpty());
+        assert (actes.get(0).getAdmission().getAdmissionIEP() == iep);
+
         //Test d'ajout d'une image à un acte radiollogique
         ImageRadiologique im5 = serv.newImageRadiologique("http://www.radiologie-luton-reims.fr/imageszoom/image003.gif", "gif", "56KoB", "Main");
         serv.updateActeRadiologiqueImage(a, im5);
         assertNotNull(a);
-        
+
         //Test consulter les images d'un patient
         List<ImageRadiologique> images = serv.getImagesByAdmission("4454fd1fdsfsd");
         assertNotNull(a);
-        
-        
+
     }
 
 }

@@ -122,13 +122,22 @@ public class Services {
     }
 
     //Acte Radiologique
-    public ActeRadiologique newActeRadiologique(Date dateActe, Admission ad, List<ImageRadiologique> images, Appareil appareil, NomemclatureCCAM nomemclatureCCAM) {
+    public ActeRadiologique newActeRadiologique(Date dateActe, Admission ad, List<ImageRadiologique> images, Appareil appareil, CCAM CCAM) {
         ActeRadiologique a = new ActeRadiologique();
         a.setActeRadiologiqueDate(new java.util.Date());
         a.setAdmission(ad);
         a.setImages(images);
         a.setAppareil(appareil);
-        a.setNomenclatureCCAM(nomemclatureCCAM);
+        a.setNomenclatureCCAM(CCAM);
+        em.getTransaction().begin();
+        em.persist(a);
+        em.getTransaction().commit();
+        return a;
+    }
+
+    //Acte Radiologique
+    public ActeRadiologique newActeRadiologique(ActeRadiologique a) {
+
         em.getTransaction().begin();
         em.persist(a);
         em.getTransaction().commit();
@@ -241,6 +250,45 @@ public class Services {
         em.createQuery("DELETE FROM Appareil").executeUpdate();
         em.getTransaction().commit();
     }
+    
+    
+    //CCAM (le bon)
+    
+     public CCAM newCCAM(String CCAMLibelle, String CCAMCode) {
+        CCAM a = new CCAM();
+        a.setCCAMLibelle(CCAMLibelle);
+        a.setCCAMCode(CCAMCode);
+        em.getTransaction().begin();
+        em.persist(a);
+        em.getTransaction().commit();
+        return a;
+    }
+
+    public CCAM getCCAM(Long id) {
+        CCAM ap = em.find(CCAM.class, id);
+        return ap;
+    }
+
+    public List<CCAM> getAllCCAM() {
+        TypedQuery<CCAM> query = em.createQuery("SELECT a FROM CCAM a", CCAM.class);
+        List<CCAM> res = query.getResultList();
+        return res;
+    }
+
+    public void removeCCAM(Long CCAMid) {
+
+        Appareil ap = em.find(Appareil.class, CCAMid);
+        em.getTransaction().begin();
+        em.remove(ap);
+        em.getTransaction().commit();
+
+    }
+
+    public void deleteAllCCAM() {
+        em.getTransaction().begin();
+        em.createQuery("DELETE FROM CCAM").executeUpdate();
+        em.getTransaction().commit();
+    }
 
     //Image Radiologique
     public ImageRadiologique newImageRadiologique(String imageRadiologiqueFormat, String imageRadiologiqueLibelle, String imageRadiolgoquePoids, String imageRadiologiqueURL) {
@@ -271,8 +319,8 @@ public class Services {
         em.createQuery("DELETE FROM ImageRadiologique").executeUpdate();
         em.getTransaction().commit();
     }
-    
-     public void removeImageRadiologique(Long imageRadiologiqueId) {
+
+    public void removeImageRadiologique(Long imageRadiologiqueId) {
 
         ImageRadiologique ap = em.find(ImageRadiologique.class, imageRadiologiqueId);
         em.getTransaction().begin();
@@ -282,6 +330,7 @@ public class Services {
     }
 
     //NomemclatureCCAM
+    //NE PLUS UTILISER
     public NomemclatureCCAM newNomemclatureCCAM(String NomemclatureCCAMLibelle, String nomenclatureCCAMCode) {
         NomemclatureCCAM a = new NomemclatureCCAM();
         a.setNomenclatureCCAMLibelle(NomemclatureCCAMLibelle);
@@ -291,18 +340,18 @@ public class Services {
         em.getTransaction().commit();
         return a;
     }
-
+    //NE PLUS UTILISER
     public NomemclatureCCAM getNomemclatureCCAM(Long id) {
         NomemclatureCCAM nc = em.find(NomemclatureCCAM.class, id);
         return nc;
     }
-
-    public List<NomemclatureCCAM> getAllNomemclatureCCAM() {
-        TypedQuery<NomemclatureCCAM> query = em.createQuery("SELECT a FROM NomemclatureCCAM a", NomemclatureCCAM.class);
+    //NE PLUS UTILISER
+     public List<NomemclatureCCAM> getAllNomemclatureCCAM() {
+        TypedQuery<NomemclatureCCAM> query = em.createQuery("SELECT n FROM NomemclatureCCAM n", NomemclatureCCAM.class);
         List<NomemclatureCCAM> res = query.getResultList();
         return res;
     }
-
+    //NE PLUS UTILISER
     public void deleteAllNomemclatureCCAM() {
         em.getTransaction().begin();
         em.createQuery("DELETE FROM NomemclatureCCAM").executeUpdate();

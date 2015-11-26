@@ -55,6 +55,14 @@ public class ImageRadiologique implements Serializable {
         return imageRadiologiquePoids;
     }
 
+    public Long getImageRadiologiqueId() {
+        return imageRadiologiqueId;
+    }
+
+    public void setImageRadiologiqueId(Long imageRadiologiqueId) {
+        this.imageRadiologiqueId = imageRadiologiqueId;
+    }
+
     public String getImageRadiologiqueLibelle() {
         return imageRadiologiqueLibelle;
     }
@@ -62,13 +70,7 @@ public class ImageRadiologique implements Serializable {
     private String imageRadiologiquePoids;
     private String imageRadiologiqueLibelle;
 
-    public long getId() {
-        return imageRadiologiqueId;
-    }
-
-    public void setId(Long id) {
-        this.imageRadiologiqueId = id;
-    }
+   
 
     @Override
     public int hashCode() {

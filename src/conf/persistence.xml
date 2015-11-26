@@ -9,6 +9,7 @@
     <class>bureau.Appareil</class>
     <class>bureau.Admission</class>
     <class>bureau.ImageRadiologique</class>
+    <class>bureau.CCAM</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/bureau?zeroDateTimeBehavior=convertToNull"/>

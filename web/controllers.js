@@ -8,11 +8,16 @@ angular.module('monApp').controller('ActeRadiologiqueController', ['ActeRadiolog
     }
 ]);
 
-angular.module('monApp').controller('ActeRadiologiqueNewController', ['ActeRadiologique',
-    function (ActeRadiologique) {
+angular.module('monApp').controller('ActeRadiologiqueNewController', ['ActeRadiologique','CCAM','Appareil',
+    function (ActeRadiologique, CCAM, Appareil) {
         this.act = new ActeRadiologique();
+        
+        this.ccam = CCAM.query();
+        this.appa = Appareil.query();
         this.update = function () {
             // appel POST asynchrone au service web sur /crayons
+            console.log(this.appa.appareilLibelle);
+            //console.log(this.act.ccam.CCAMId);
             this.act.$save();
 
         };
@@ -91,24 +96,24 @@ angular.module('monApp').controller('CrayonEditController', ['$routeParams', 'Cr
         $location.path("/");
     }]);
 
-angular.module('monApp').controller('NomemclatureCCAMController', ['NomemclatureCCAM',
-    function (NomemclatureCCAM) {
-        this.nomemclatureccam = NomemclatureCCAM.query();
+angular.module('monApp').controller('CCAMController', ['CCAM',
+    function (CCAM) {
+        this.ccam = CCAM.query();
         this.delete = function (no) {
             // appel DELETE asynchrone au service web sur /crayons/{id}
             //cr.$delete();
-            NomemclatureCCAM.delete(no);
+            CCAM.delete(no);
             // remet à jour le tableau des crayons en suprimant l'élément effacé
-            this.nomemclatureccam.splice(this.nomemclatureccam.indexOf(no), 1);
+            this.ccam.splice(this.ccam.indexOf(no), 1);
         };
     }
 ]);
 
-angular.module('monApp').controller('NomemclatureCCAMNewController', ['NomemclatureCCAM',
-    function (NomemclatureCCAM) {
-        this.nomemclatureccam = new NomemclatureCCAM();
+angular.module('monApp').controller('CCAMNewController', ['CCAM',
+    function (CCAM) {
+        this.ccam = new CCAM();
         this.update = function () {
-            this.nomemclatureccam.$save();
+            this.ccam.$save();
         };
     }]);
 

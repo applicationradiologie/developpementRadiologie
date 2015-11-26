@@ -33,11 +33,11 @@ angular.module('monApp').config(['$routeProvider', function routeConfig($routePr
         templateUrl: 'listeCrayon.html'    
     })
      .when('/listeNomenc', {
-        controller: "NomemclatureCCAMController as ctrl",
+        controller: "CCAMController as ctrl",
         templateUrl: 'listeNomemclatureCCAM.html'    
     })
      .when('/newNomenc', {
-        controller: "NomemclatureCCAMNewController as ctrl",
+        controller: "CCAMNewController as ctrl",
         templateUrl: 'newNomemclatureCCAM.html'    
     })
      .when('/images', {

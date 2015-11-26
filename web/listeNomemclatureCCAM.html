@@ -21,11 +21,11 @@
             <th> Id </th>
             <th> Libelle </th>
             <th> Code </th>
-        <tr ng-repeat='no in ctrl.nomemclatureccam'>
-            <td> {{ no.nomenclatureCCAMId}} </td>
-            <td> {{ no.nomenclatureCCAMLibelle}} </td>
-            <td> {{ no.nomemclatureCCAMCode}} </td>
-            <td> <a ng-href="#/nomencEdition/{{no.nomenclatureCCAMId}}"/> Editer </a>
+        <tr ng-repeat='no in ctrl.ccam'>
+            <td> {{ no.idCCAM}} </td>
+            <td> {{ no.CCAMLibelle}} </td>
+            <td> {{ no.CCAMCode}} </td>
+            <td> <a ng-href="#/nomencEdition/{{no.idCCAM}}"/> Editer </a>
             <td> <input type="button" value="Supprimer" ng-click="ctrl.delete(no)"/> 
         </tr>
     </table>

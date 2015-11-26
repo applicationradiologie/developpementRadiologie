@@ -26,35 +26,24 @@ import javax.persistence.OneToOne;
 @Entity
 public class ActeRadiologique implements Serializable {
 
-    public Date getActeRadiologiqueDate() {
-        return acteRadiologiqueDate;
-    }
-
-    public void setActeRadiologiqueDate(Date acteRadiologiqueDate) {
-        this.acteRadiologiqueDate = acteRadiologiqueDate;
-    }
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     private Long acteRadiologiquePACS;
-    
-    @OneToOne
-    private Appareil appareil;
-    
-    
-    @OneToOne
-    private NomemclatureCCAM nomenclatureCCAM;
 
-    
-    @ManyToOne(fetch = FetchType.EAGER, cascade =CascadeType.ALL)
+    @ManyToOne
+    private Appareil appareil;
+
+    @ManyToOne
+    private CCAM CCAM;
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     Admission admission;
-    
-    @OneToMany(fetch = FetchType.EAGER, cascade =CascadeType.ALL)
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     List<ImageRadiologique> images;
-    
-    
-    
+
     private Date acteRadiologiqueDate;
 
     public List<ImageRadiologique> getImages() {
@@ -65,6 +54,14 @@ public class ActeRadiologique implements Serializable {
         this.images = images;
     }
 
+    public Date getActeRadiologiqueDate() {
+        return acteRadiologiqueDate;
+    }
+
+    public void setActeRadiologiqueDate(Date acteRadiologiqueDate) {
+        this.acteRadiologiqueDate = acteRadiologiqueDate;
+    }
+
     public Appareil getAppareil() {
         return appareil;
     }
@@ -73,15 +70,14 @@ public class ActeRadiologique implements Serializable {
         this.appareil = appareil;
     }
 
-    public NomemclatureCCAM getNomenclatureCCAM() {
-        return nomenclatureCCAM;
+    public CCAM getCCAM() {
+        return CCAM;
     }
 
-    public void setNomenclatureCCAM(NomemclatureCCAM nomenclatureCCAM) {
-        this.nomenclatureCCAM = nomenclatureCCAM;
+    public void setNomenclatureCCAM(CCAM CCAM) {
+        this.CCAM = CCAM;
     }
-    
-    
+
     public Long getId() {
         return acteRadiologiquePACS;
     }

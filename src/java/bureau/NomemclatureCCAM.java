@@ -22,13 +22,21 @@ public class NomemclatureCCAM implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long nomenclatureCCAMId;
+    private Integer nomenclatureCCAMId;
 
     @Column
     private String nomenclatureCCAMLibelle;
     
     @Column
     private String nomemclatureCCAMCode;
+    
+    public Integer getNomemclatureCCAMId() {
+        return nomenclatureCCAMId;
+    }
+
+    public void setNomenclatureCCAMId(Integer nomenclatureCCAMId) {
+        this.nomenclatureCCAMId = nomenclatureCCAMId;
+    }
 
     public String getNomemclatureCCAMCode() {
         return nomemclatureCCAMCode;
@@ -66,9 +74,9 @@ public class NomemclatureCCAM implements Serializable {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "bureau.NomemclatureCCAM[ id=" + nomenclatureCCAMId + " ]";
-    }
+//    @Override
+//    public String toString() {
+//        return "bureau.NomemclatureCCAM[ id=" + nomenclatureCCAMId + " ]";
+//    }
 
 }

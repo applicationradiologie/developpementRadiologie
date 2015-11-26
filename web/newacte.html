@@ -21,13 +21,11 @@ and open the template in the editor.
         <a href="#/"><button class="button cycle-button">←</button></a>
         <form>
             <h3> Création d'un acte de radiologie </h3>
-
+            Nomemclature
+            <SELECT class="form-control" ng-options='no.CCAMLibelle for no in ctrl.ccam' ng-model="ctrl.act.ccam"></SELECT>
+            Appareil
+            <SELECT class="form-control" ng-options='ap.appareilLibelle for ap in ctrl.appa' ng-model="ctrl.act.appa"></SELECT>
             <input type="submit" ng-click="ctrl.update()" value="Créer un acte de radiologie" />
-
-            <div ng-show="ctrl.act.acteRadiologiquePACS">
-                Création du nouvel acte de radiologie d'identifiant {{ctrl.act.acteRadiologiquePACS}} effectué.
-            </div>
-
             <br/>
         </form>
     </body>

@@ -25,3 +25,12 @@ angular.module('monApp').factory('NomemclatureCCAM', ['$resource', function ($re
 angular.module('monApp').factory('ImageRadiologique', ['$resource', function ($resource) {
         return $resource('/bureau/webresources/generic/imageradiologique/:im', {im: '@imageRadiologiqueId'});
     }]);
+
+angular.module('monApp').factory('CCAM', ['$resource', function ($resource) {
+        return $resource('/bureau/webresources/generic/CCAM/:no', {no: '@idCCAM'});
+    }]);
+
+angular.module('monApp').factory('Admission', ['$resource', function ($resource) {
+        return $resource('/bureau/webresources/generic/admission/:ad', {ad: '@admissionIEP'});
+    }]);
+

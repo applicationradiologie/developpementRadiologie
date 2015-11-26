@@ -110,6 +110,16 @@ public class RestServices {
         return serv.getActeRadiologiqueByAdmission(ipp);
     }
     
+    //Afficher les actes radiologiques par admission OK
+    @GET
+    @Path("acteradiologique")
+    @Produces("application/json")
+    public List<ActeRadiologique> getAllActeRadiologiques() {
+        //TODO return proper representation object
+        Services serv = new Services(DatabaseUtils.fact());
+        return serv.getAllActeRadiologique();
+    }
+    
     //Obtenir les actes radiologiques d'une admission OK
     @GET
     @Path("admission/{iep}")
@@ -119,10 +129,19 @@ public class RestServices {
         Services serv = new Services(DatabaseUtils.fact());
         return serv.getAdmission(iep);
     }
+    
+    //Obtenir toutes les admissions
+    @GET
+    @Path("admission")
+    @Produces("application/json")
+    public List<Admission> getAdmissions() {
+        //TODO return proper representation object
+        return serv.getAllAdmission();
+    }
      
     //Consulter les images d'un patient OK
     @GET
-    @Path("acteradiologique/{ipp}")
+    @Path("acteradiologiqueimages/{ipp}")
     @Produces("application/json")
     public List<ImageRadiologique> getImagesByAdmission(@PathParam("ipp") String ipp){
          Services serv = new Services(DatabaseUtils.fact());
@@ -138,7 +157,17 @@ public class RestServices {
         return serv.getAllAppareil();
     }
     
+    //Obtenir tous les CCAM (le bon)
+    @GET
+    @Path("CCAM")
+    @Produces("application/json")
+    public List<CCAM> getAllCCAM() {
+        //TODO return proper representation object
+        return serv.getAllCCAM();
+    }
+    
     //Obtenir toutes les nomenclature
+    //NE PLUS UTILISER
     @GET
     @Path("nomemclatureCCAM")
     @Produces("application/json")
@@ -148,7 +177,6 @@ public class RestServices {
     }
     
     //Obtenir toutes les images
-     //Obtenir toutes les nomenclature
     @GET
     @Path("imageradiologique")
     @Produces("application/json")
@@ -164,7 +192,7 @@ public class RestServices {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces("application/json")
     public ActeRadiologique newActeRadiologique(ActeRadiologique act) {
-        serv.newActeRadiologique(act.getActeRadiologiqueDate(), act.getAdmission(), act.getImages(), act.getAppareil(), act.getNomenclatureCCAM());
+        serv.newActeRadiologique(act);
         System.out.println("Acte radiologique créé le " + act.getActeRadiologiqueDate()+ " pour l'admission "+ act.getAdmission().getAdmissionIEP());
         return act;
     }
@@ -180,7 +208,8 @@ public class RestServices {
         return appa;
     }
     
-    //Créer une nomenclature CCAM
+    //Créer une nomenclature CCAM 
+    //NE PLUS UTILISER
     @POST
     @Path("nomemclatureCCAM")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -189,6 +218,17 @@ public class RestServices {
         serv.newNomemclatureCCAM(no.getNomenclatureCCAMLibelle(), no.getNomemclatureCCAMCode());
         System.out.println("La nomemclature "+no.getNomenclatureCCAMLibelle()+"a été ajoutée ");
         return no;
+    }
+    
+     //Créer une nomenclature CCAM (le bon)
+    @POST
+    @Path("CCAM")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces("application/json")
+    public CCAM newCCAM(CCAM ccam){
+        serv.newCCAM(ccam.getCCAMLibelle(), ccam.getCCAMCode());
+        System.out.println("La nomenclature "+ccam.getCCAMLibelle()+"a été ajoutée ");
+        return ccam;
     }
     
      //Créer une image
