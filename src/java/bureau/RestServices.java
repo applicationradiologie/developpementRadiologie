@@ -5,6 +5,7 @@
  */
 package bureau;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -116,18 +117,16 @@ public class RestServices {
     @Produces("application/json")
     public List<ActeRadiologique> getAllActeRadiologiques() {
         //TODO return proper representation object
-        Services serv = new Services(DatabaseUtils.fact());
         return serv.getAllActeRadiologique();
     }
     
-    //Obtenir les actes radiologiques d'une admission OK
+    //Obtenir une admission OK
     @GET
     @Path("admission/{iep}")
     @Produces("application/json")
     public Admission getAdmissions(@PathParam("iep") Long iep) {
         //TODO return proper representation object
-        Services serv = new Services(DatabaseUtils.fact());
-        return serv.getAdmission(iep);
+        return serv.getAdmissionById(iep);
     }
     
     //Obtenir toutes les admissions
@@ -138,13 +137,15 @@ public class RestServices {
         //TODO return proper representation object
         return serv.getAllAdmission();
     }
+    
+    
+   
      
     //Consulter les images d'un patient OK
     @GET
     @Path("acteradiologiqueimages/{ipp}")
     @Produces("application/json")
     public List<ImageRadiologique> getImagesByAdmission(@PathParam("ipp") String ipp){
-         Services serv = new Services(DatabaseUtils.fact());
          return serv.getImagesByAdmission(ipp);
     }
     
@@ -155,6 +156,33 @@ public class RestServices {
     public List<Appareil> getAppareils() {
         //TODO return proper representation object
         return serv.getAllAppareil();
+    }
+    
+    //Obtenir un appareil
+    @GET
+    @Path("appareil/{appa}")
+    @Produces("application/json")
+    public Appareil getAppareil(@PathParam("appa") int appareilId) {
+        //TODO return proper representation object
+        return serv.getAppareilByID(appareilId);
+    }
+    
+    //Editer un appareil
+    @POST
+    @Path("appareil/{appa}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response editAppareil(Appareil appa) {
+        serv.editAppareil(appa);
+        return Response.status(200).entity(appa).build();
+    }
+    
+    //Obtenir un CCAM
+    @GET
+    @Path("CCAM/{no}")
+    @Produces("application/json")
+    public CCAM getCCAMById(@PathParam("no") Long idCCAM) {
+        //TODO return proper representation object
+        return serv.getCCAMById(idCCAM);
     }
     
     //Obtenir tous les CCAM (le bon)
@@ -192,8 +220,15 @@ public class RestServices {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces("application/json")
     public ActeRadiologique newActeRadiologique(ActeRadiologique act) {
-        serv.newActeRadiologique(act);
-        System.out.println("Acte radiologique créé le " + act.getActeRadiologiqueDate()+ " pour l'admission "+ act.getAdmission().getAdmissionIEP());
+        List<ImageRadiologique> images;
+        images = new ArrayList<>();
+        serv.newActeRadiologique(act.getActeRadiologiqueDate(), act.getAdmission(),images, act.getAppareil(), act.getCCAM());
+        System.out.println(act.getActeRadiologiqueDate());
+        System.out.println(act.getAdmission());
+        System.out.println(act.getAppareil());
+        System.out.println(act.getCCAM());
+        
+        //System.out.println("Acte radiologique créé le " + act.getActeRadiologiqueDate()+ " pour l'admission "+ act.getAdmission().getAdmissionIEP());
         return act;
     }
     
@@ -240,6 +275,17 @@ public class RestServices {
         serv.newImageRadiologique(im.getImageRadiologiqueFormat(), im.getImageRadiologiqueLibelle(), im.getImageRadiologiquePoids(), im.getImageRadiologiqueURL());
         System.out.println("L'image "+im.getImageRadiologiqueLibelle()+"a été ajoutée ");
         return im;
+    }
+    
+    //Créer une admission
+    @POST
+    @Path("admission")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces("application/json")
+    public Admission newAdmission(Admission ad){
+        serv.newAdmission(ad.getAdmissionIPP());
+        System.out.println("L'admission "+ad.getAdmissionIPP()+"a été ajoutée ");
+        return ad;
     }
     
     //Supprimer un appareil

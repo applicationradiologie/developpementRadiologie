@@ -128,7 +128,7 @@ public class Services {
         a.setAdmission(ad);
         a.setImages(images);
         a.setAppareil(appareil);
-        a.setNomenclatureCCAM(CCAM);
+        a.setCCAM(CCAM);
         em.getTransaction().begin();
         em.persist(a);
         em.getTransaction().commit();
@@ -136,13 +136,13 @@ public class Services {
     }
 
     //Acte Radiologique
-    public ActeRadiologique newActeRadiologique(ActeRadiologique a) {
-
-        em.getTransaction().begin();
-        em.persist(a);
-        em.getTransaction().commit();
-        return a;
-    }
+//    public ActeRadiologique newActeRadiologique2(ActeRadiologique a) {
+//
+//        em.getTransaction().begin();
+//        em.persist(a);
+//        em.getTransaction().commit();
+//        return a;
+//    }
 
     public ActeRadiologique getActeRadiologique(Long id) {
         ActeRadiologique res = em.find(ActeRadiologique.class, id);
@@ -185,7 +185,7 @@ public class Services {
         return a;
     }
 
-    public Admission getAdmission(Long iep) {
+    public Admission getAdmissionById(Long iep) {
         Admission adm = em.find(Admission.class, iep);
         return adm;
     }
@@ -194,6 +194,23 @@ public class Services {
         TypedQuery<Admission> query = em.createQuery("SELECT a FROM Admission a", Admission.class);
         List<Admission> res = query.getResultList();
         return res;
+    }
+    
+    public void editAdmission(Admission adm) {
+
+        em.getTransaction().begin();
+        em.merge(adm);
+        em.getTransaction().commit();
+
+    }
+    
+      public void removeAdmission(Long admissionIEP) {
+
+        Admission adm = em.find(Admission.class, admissionIEP);
+        em.getTransaction().begin();
+        em.remove(adm);
+        em.getTransaction().commit();
+
     }
 
     public void deleteAllAdmission() {
@@ -225,9 +242,17 @@ public class Services {
         return a;
     }
 
-    public Appareil getAppareil(Long id) {
-        Appareil ap = em.find(Appareil.class, id);
+    public Appareil getAppareilByID(int appareilId) {
+        Appareil ap = em.find(Appareil.class, appareilId);
         return ap;
+    }
+    
+    public void editAppareil(Appareil appa) {
+
+        em.getTransaction().begin();
+        em.merge(appa);
+        em.getTransaction().commit();
+
     }
 
     public List<Appareil> getAllAppareil() {
@@ -264,8 +289,8 @@ public class Services {
         return a;
     }
 
-    public CCAM getCCAM(Long id) {
-        CCAM ap = em.find(CCAM.class, id);
+    public CCAM getCCAMById(Long CCAMid) {
+        CCAM ap = em.find(CCAM.class, CCAMid);
         return ap;
     }
 
@@ -273,6 +298,14 @@ public class Services {
         TypedQuery<CCAM> query = em.createQuery("SELECT a FROM CCAM a", CCAM.class);
         List<CCAM> res = query.getResultList();
         return res;
+    }
+    
+    public void editCCAM(CCAM ccam) {
+
+        em.getTransaction().begin();
+        em.merge(ccam);
+        em.getTransaction().commit();
+
     }
 
     public void removeCCAM(Long CCAMid) {
@@ -303,8 +336,8 @@ public class Services {
         return a;
     }
 
-    public ImageRadiologique getImageRadiologique(Long id) {
-        ImageRadiologique i = em.find(ImageRadiologique.class, id);
+    public ImageRadiologique getImageRadiologiqueById(Long imageRadiologiqueId) {
+        ImageRadiologique i = em.find(ImageRadiologique.class, imageRadiologiqueId);
         return i;
     }
 
@@ -312,6 +345,14 @@ public class Services {
         TypedQuery<ImageRadiologique> query = em.createQuery("SELECT a FROM ImageRadiologique a", ImageRadiologique.class);
         List<ImageRadiologique> res = query.getResultList();
         return res;
+    }
+    
+    public void editImage(ImageRadiologique img) {
+
+        em.getTransaction().begin();
+        em.merge(img);
+        em.getTransaction().commit();
+
     }
 
     public void deleteAllImageRadiologique() {

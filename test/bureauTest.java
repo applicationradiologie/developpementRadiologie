@@ -5,7 +5,6 @@
  */
 
 import bureau.ActeRadiologique;
-import static bureau.ActeRadiologique_.CCAM;
 import bureau.Admission;
 import bureau.Appareil;
 import bureau.Boite;

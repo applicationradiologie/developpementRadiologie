@@ -22,7 +22,7 @@ public class Appareil implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long appareilId;
+    private int appareilId;
     
     @Column
     private String appareilLibelle;
@@ -30,11 +30,11 @@ public class Appareil implements Serializable {
     @Column
     private String appareilModalite;
 
-    public Long getAppareilId() {
+    public int getAppareilId() {
         return appareilId;
     }
 
-    public void setAppareilId(Long appareilId) {
+    public void setAppareilId(int appareilId) {
         this.appareilId = appareilId;
     }
 
@@ -55,28 +55,23 @@ public class Appareil implements Serializable {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (appareilId != null ? appareilId.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Appareil)) {
-            return false;
-        }
-        Appareil other = (Appareil) object;
-        if ((this.appareilId == null && other.appareilId != null) || (this.appareilId != null && !this.appareilId.equals(other.appareilId))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
     public String toString() {
-        return "bureau.Appareil[ id=" + appareilId + " ]";
+        return super.toString(); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+  
+
+   
+
     
 }

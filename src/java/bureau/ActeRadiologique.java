@@ -29,7 +29,6 @@ public class ActeRadiologique implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column
     private Long acteRadiologiquePACS;
 
     @ManyToOne
@@ -45,6 +44,38 @@ public class ActeRadiologique implements Serializable {
     List<ImageRadiologique> images;
 
     private Date acteRadiologiqueDate;
+
+    public Long getActeRadiologiquePACS() {
+        return acteRadiologiquePACS;
+    }
+
+    public void setActeRadiologiquePACS(Long acteRadiologiquePACS) {
+        this.acteRadiologiquePACS = acteRadiologiquePACS;
+    }
+
+    public Appareil getAppareil() {
+        return appareil;
+    }
+
+    public void setAppareil(Appareil appareil) {
+        this.appareil = appareil;
+    }
+
+    public CCAM getCCAM() {
+        return CCAM;
+    }
+
+    public void setCCAM(CCAM CCAM) {
+        this.CCAM = CCAM;
+    }
+
+    public Admission getAdmission() {
+        return admission;
+    }
+
+    public void setAdmission(Admission admission) {
+        this.admission = admission;
+    }
 
     public List<ImageRadiologique> getImages() {
         return images;
@@ -62,37 +93,7 @@ public class ActeRadiologique implements Serializable {
         this.acteRadiologiqueDate = acteRadiologiqueDate;
     }
 
-    public Appareil getAppareil() {
-        return appareil;
-    }
-
-    public void setAppareil(Appareil appareil) {
-        this.appareil = appareil;
-    }
-
-    public CCAM getCCAM() {
-        return CCAM;
-    }
-
-    public void setNomenclatureCCAM(CCAM CCAM) {
-        this.CCAM = CCAM;
-    }
-
-    public Long getId() {
-        return acteRadiologiquePACS;
-    }
-
-    public Admission getAdmission() {
-        return admission;
-    }
-
-    public void setAdmission(Admission admission) {
-        this.admission = admission;
-    }
-
-    public void setId(Long id) {
-        this.acteRadiologiquePACS = id;
-    }
+    
 
     @Override
     public int hashCode() {

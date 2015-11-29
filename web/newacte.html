@@ -27,6 +27,7 @@ and open the template in the editor.
                     <td><h4>Nomemclature</h4></td>
                     <td><h4>Appareil</h4></td>
                     <td><h4>Date</h4></td>
+                    <td><h4>IPP Admi</h4></td>
                 </tr>
                 <tr>
                     <td>
@@ -49,6 +50,11 @@ and open the template in the editor.
                                         $("#datepicker").datepicker();
                                     });
                         </script>
+                    </td>
+                    <td>
+                        <div class="input-control select">
+                            <SELECT class="form-control" ng-options='ad.admissionIPP for ad in ctrl.admi' ng-model="ctrl.act.admi"></SELECT>
+                        </div>
                     </td>
                 </tr>
             </table>

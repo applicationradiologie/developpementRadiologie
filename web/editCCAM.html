@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+<form novalidate class="simple-form">
+    <h3> Edition du CCAM d'identifiant {{ ctrl.ccam.idCCAM }} </h3>
+   
+    Code: <input type="text" ng-model="ctrl.ccam.CCAMCode" /><br />
+    Libelle: <input type="text" ng-model="ctrl.ccam.CCAMLibelle" /><br />
+    <input type="submit" ng-click="ctrl.update()" value="Save" />
+</form>
+</html>
