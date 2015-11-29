@@ -21,10 +21,39 @@ and open the template in the editor.
         <a href="#/"><button class="button cycle-button">←</button></a>
         <form>
             <h3> Création d'un acte de radiologie </h3>
-            Nomemclature
-            <SELECT class="form-control" ng-options='no.CCAMLibelle for no in ctrl.ccam' ng-model="ctrl.act.ccam"></SELECT>
-            Appareil
-            <SELECT class="form-control" ng-options='ap.appareilLibelle for ap in ctrl.appa' ng-model="ctrl.act.appa"></SELECT>
+
+            <table width="400px">
+                <tr>
+                    <td><h4>Nomemclature</h4></td>
+                    <td><h4>Appareil</h4></td>
+                    <td><h4>Date</h4></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="input-control select">
+                            <SELECT class="form-control" ng-options='no.CCAMLibelle for no in ctrl.ccam' ng-model="ctrl.act.ccam"></SELECT>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-control select">
+                            <SELECT class="form-control" ng-options='ap.appareilLibelle for ap in ctrl.appa' ng-model="ctrl.act.appa"></SELECT>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="input-control text" data-role="datepicker">
+                            <input type="text">
+                            <button class="button"><span class="mif-calendar"></span></button>
+                        </div>
+                        <script>
+                                    $(function () {
+                                        $("#datepicker").datepicker();
+                                    });
+                        </script>
+                    </td>
+                </tr>
+            </table>
+
+            <br/><br/>
             <input type="submit" ng-click="ctrl.update()" value="Créer un acte de radiologie" />
             <br/>
         </form>
