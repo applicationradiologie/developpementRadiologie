@@ -222,11 +222,7 @@ public class RestServices {
     public ActeRadiologique newActeRadiologique(ActeRadiologique act) {
         List<ImageRadiologique> images;
         images = new ArrayList<>();
-        serv.newActeRadiologique(act.getActeRadiologiqueDate(), act.getAdmission(),images, act.getAppareil(), act.getCCAM());
-        System.out.println(act.getActeRadiologiqueDate());
-        System.out.println(act.getAdmission());
-        System.out.println(act.getAppareil());
-        System.out.println(act.getCCAM());
+        serv.newActeRadiologique2(act);
         
         //System.out.println("Acte radiologique créé le " + act.getActeRadiologiqueDate()+ " pour l'admission "+ act.getAdmission().getAdmissionIEP());
         return act;
@@ -290,8 +286,9 @@ public class RestServices {
     
     //Supprimer un appareil
     @DELETE
-    @Path("appareil/{appa}")
-    public Response removeAppareil(@PathParam("appa") Long appareilId) {
+    @Path("appareil/{id}")
+    public Response removeAppareil(@PathParam("id") int appareilId) {
+        System.out.println("coucou ");
         serv.removeAppareil(appareilId);
         return Response.status(200).build();
     }
@@ -303,6 +300,23 @@ public class RestServices {
         serv.removeImageRadiologique(imageRadiologiqueId);
         return Response.status(200).build();
     }
+    
+    //Supprimer un CCAM
+    @DELETE
+    @Path("CCAM/{no}")
+    public Response removeCCAM(@PathParam("no") Long CCAMid) {
+        serv.removeCCAM(CCAMid);
+        return Response.status(200).build();
+    }
+    
+    //Supprimer une admission
+    @DELETE
+    @Path("admission/{iep}")
+    public Response removeAdmission(@PathParam("iep") Long admissionIEP) {
+        serv.removeAdmission(admissionIEP);
+        return Response.status(200).build();
+    }
+    
     
     
     //Ajouter une image à un acte --> LE coupable !!!!!!!!!!!!

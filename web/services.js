@@ -8,15 +8,12 @@ angular.module('monApp').factory('ActeRadiologique', ['$resource', function ($re
     }]);
 
 angular.module('monApp').factory('Appareil', ['$resource', function ($resource) {
-
-        //  voir https://docs.angularjs.org/api/ngResource/service/$resource pour la doc de cet objet
-        return $resource('/bureau/webresources/generic/appareil/:appa', {appa: '@appareilId'}, {
-            'get': {method: 'GET', isArray : false},
+        return $resource('/bureau/webresources/generic/appareil/:id', {id: '@idAppareil'},{
+            'get': {method: 'GET', isArray: false},
             'save': {method: 'POST'},
             'query': {method: 'GET', isArray: true},
             'remove': {method: 'DELETE'},
             'delete': {method: 'DELETE'}});
-
     }]);
 
 angular.module('monApp').factory('Crayons', ['$resource', function ($resource) {

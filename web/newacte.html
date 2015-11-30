@@ -32,17 +32,17 @@ and open the template in the editor.
                 <tr>
                     <td>
                         <div class="input-control select">
-                            <SELECT class="form-control" ng-options='no.CCAMLibelle for no in ctrl.ccam' ng-model="ctrl.act.ccam"></SELECT>
+                            <SELECT class="form-control" ng-options='no.CCAMLibelle for no in ctrl.ccam' ng-model="ctrl.act.CCAM"></SELECT>
                         </div>
                     </td>
                     <td>
                         <div class="input-control select">
-                            <SELECT class="form-control" ng-options='ap.appareilLibelle for ap in ctrl.appa' ng-model="ctrl.act.appa"></SELECT>
+                            <SELECT class="form-control" ng-options='ap.appareilLibelle for ap in ctrl.appa' ng-model="ctrl.act.appareil"></SELECT>
                         </div>
                     </td>
                     <td>
                         <div class="input-control text" data-role="datepicker">
-                            <input type="text">
+                            <input type="text" ng-model="ctrl.act.acteRadiologiqueDate">
                             <button class="button"><span class="mif-calendar"></span></button>
                         </div>
                         <script>
@@ -53,7 +53,7 @@ and open the template in the editor.
                     </td>
                     <td>
                         <div class="input-control select">
-                            <SELECT class="form-control" ng-options='ad.admissionIPP for ad in ctrl.admi' ng-model="ctrl.act.admi"></SELECT>
+                            <SELECT class="form-control" ng-options='ad.admissionIPP for ad in ctrl.admi' ng-model="ctrl.act.admission"></SELECT>
                         </div>
                     </td>
                 </tr>

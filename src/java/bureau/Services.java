@@ -135,14 +135,13 @@ public class Services {
         return a;
     }
 
-    //Acte Radiologique
-//    public ActeRadiologique newActeRadiologique2(ActeRadiologique a) {
-//
-//        em.getTransaction().begin();
-//        em.persist(a);
-//        em.getTransaction().commit();
-//        return a;
-//    }
+//    Acte Radiologique
+    public ActeRadiologique newActeRadiologique2(ActeRadiologique a) {
+        em.getTransaction().begin();
+        em.persist(a);
+        em.getTransaction().commit();
+        return a;
+    }
 
     public ActeRadiologique getActeRadiologique(Long id) {
         ActeRadiologique res = em.find(ActeRadiologique.class, id);
@@ -261,7 +260,7 @@ public class Services {
         return res;
     }
 
-    public void removeAppareil(Long appareilId) {
+    public void removeAppareil(int appareilId) {
 
         Appareil ap = em.find(Appareil.class, appareilId);
         em.getTransaction().begin();

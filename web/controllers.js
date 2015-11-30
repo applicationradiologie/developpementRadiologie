@@ -41,17 +41,15 @@ angular.module('monApp').controller('ActeRadiologiqueEditController', ['$routePa
 ]);
 
 angular.module('monApp').controller('AppareilController', ['Appareil',
-    function (Appareils) {
+    function (Appareil) {
         console.log("ca passe");
-        this.appa = Appareils.query();
+        this.appa = Appareil.query();
         this.delete = function (ap) {
             // appel DELETE asynchrone au service web sur /crayons/{id}
             //cr.$delete();
-            console.log("suppression");
-            Appareils.delete(ap);
-            console.log("suppression2");
+            Appareil.delete(ap);
             // remet à jour le tableau des crayons en suprimant l'élément effacé
-            //this.appareil.splice(this.appareil.indexOf(appa), 1);
+            this.appa.splice(this.appa.indexOf(ap), 1);
         };
     }
 ]);
@@ -67,10 +65,10 @@ angular.module('monApp').controller('AppareilNewController', ['Appareil', '$loca
 
 angular.module('monApp').controller('AppareilEditController', ['$routeParams', 'Appareil', '$location',
     function ($routeParams, Appareil, $location) {
-        this.appa = Appareil.get({appareilId: $routeParams.appa});
+        this.ap = Appareil.get({appareilId: $routeParams.id});
         this.update = function () {
             // appel POST asynchrone au service web sur /crayons/{id} 
-            this.appa.$save();
+            this.ap.$save();
             $location.path("/");
         };
     }]);
