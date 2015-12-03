@@ -26,6 +26,8 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+
+
 /**
  * REST Web Service
  *
@@ -149,22 +151,25 @@ public class RestServices {
          return serv.getImagesByAdmission(ipp);
     }
     
+    
+    //Consulter les images d'un patient OK
+    @GET
+    @Path("appareil/{appa}")
+    @Produces("application/json")
+    public Appareil getAppareil(@PathParam("appa") int appareilId){
+        System.out.println("passage1");
+         return serv.getAppareilByID(appareilId);
+    }
+    
     //Obtenir tous les appareils
     @GET
     @Path("appareil")
     @Produces("application/json")
     public List<Appareil> getAppareils() {
         //TODO return proper representation object
+        System.out.println("passage2");
+        System.out.println(serv.getAppareilByID(3).getAppareilLibelle().toString());
         return serv.getAllAppareil();
-    }
-    
-    //Obtenir un appareil
-    @GET
-    @Path("appareil/{appa}")
-    @Produces("application/json")
-    public Appareil getAppareil(@PathParam("appa") int appareilId) {
-        //TODO return proper representation object
-        return serv.getAppareilByID(appareilId);
     }
     
     //Editer un appareil
@@ -191,6 +196,8 @@ public class RestServices {
     @Produces("application/json")
     public List<CCAM> getAllCCAM() {
         //TODO return proper representation object
+        System.out.println("passage2");
+        System.out.println(serv.getAppareilByID(3).getAppareilModalite().toString());
         return serv.getAllCCAM();
     }
     
@@ -220,8 +227,10 @@ public class RestServices {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces("application/json")
     public ActeRadiologique newActeRadiologique(ActeRadiologique act) {
+        System.out.println(act);
         List<ImageRadiologique> images;
         images = new ArrayList<>();
+        act.setImages(images);
         serv.newActeRadiologique2(act);
         
         //System.out.println("Acte radiologique créé le " + act.getActeRadiologiqueDate()+ " pour l'admission "+ act.getAdmission().getAdmissionIEP());

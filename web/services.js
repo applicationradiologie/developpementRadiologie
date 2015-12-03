@@ -1,5 +1,7 @@
 
 
+/* global angular */
+
 angular.module('monApp').factory('ActeRadiologique', ['$resource', function ($resource) {
 
         //  voir https://docs.angularjs.org/api/ngResource/service/$resource pour la doc de cet objet
@@ -8,7 +10,7 @@ angular.module('monApp').factory('ActeRadiologique', ['$resource', function ($re
     }]);
 
 angular.module('monApp').factory('Appareil', ['$resource', function ($resource) {
-        return $resource('/bureau/webresources/generic/appareil/:id', {id: '@idAppareil'},{
+        return $resource('/bureau/webresources/generic/appareil/:id', {id: '@id'},{
             'get': {method: 'GET', isArray: false},
             'save': {method: 'POST'},
             'query': {method: 'GET', isArray: true},

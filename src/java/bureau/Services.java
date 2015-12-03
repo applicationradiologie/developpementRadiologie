@@ -138,7 +138,7 @@ public class Services {
 //    Acte Radiologique
     public ActeRadiologique newActeRadiologique2(ActeRadiologique a) {
         em.getTransaction().begin();
-        em.persist(a);
+        em.merge(a);
         em.getTransaction().commit();
         return a;
     }

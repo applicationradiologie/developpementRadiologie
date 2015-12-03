@@ -65,7 +65,9 @@ angular.module('monApp').controller('AppareilNewController', ['Appareil', '$loca
 
 angular.module('monApp').controller('AppareilEditController', ['$routeParams', 'Appareil', '$location',
     function ($routeParams, Appareil, $location) {
-        this.ap = Appareil.get({appareilId: $routeParams.id});
+        this.ap = Appareil.get({id: $routeParams.appa});
+
+        console.log("routeparam:"+$routeParams.appa);
         this.update = function () {
             // appel POST asynchrone au service web sur /crayons/{id} 
             this.ap.$save();

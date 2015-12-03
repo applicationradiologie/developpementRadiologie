@@ -30,7 +30,7 @@
             <td> {{ ac.acteRadiologiqueDate}} </td>
             <td> {{ ac.CCAM_CCAMid}} </td>
             <td> {{ ac.admission_admissionIEP}} </td>
-            <td> {{ ac.appareil_appareilId}} </td>
+            <td> {{ ac.appareil.appareilLibelle}} </td>
             <td> <a ng-href="#/acteEdition/{{ac.acteRadiologiquePACS}}"/> Editer </a>
             <td> <input type="button" value="Supprimer" ng-click="ctrl.delete(ac)"/> 
         </tr>
