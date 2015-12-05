@@ -12,12 +12,7 @@ angular.module('monApp').factory('ActeRadiologique', ['$resource', function ($re
     }]);
 
 angular.module('monApp').factory('Appareil', ['$resource', function ($resource) {
-        return $resource('/bureau/webresources/generic/appareil/:id', {id: '@id'},{
-            'get': {method: 'GET', isArray: false},
-            'save': {method: 'POST'},
-            'query': {method: 'GET', isArray: true},
-            'remove': {method: 'DELETE'},
-            'delete': {method: 'DELETE'}});
+        return $resource('/bureau/webresources/generic/appareil/:id', {id: '@id'});
     }]);
 
 angular.module('monApp').factory('Crayons', ['$resource', function ($resource) {

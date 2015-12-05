@@ -185,9 +185,29 @@ public class RestServices {
     @Path("appareil/{appa}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response editAppareil(Appareil appa) {
+        System.out.println("mise à jour de l'appareil");
         serv.editAppareil(appa);
         return Response.status(200).entity(appa).build();
     }
+    
+    //Editer un CCAM
+    @POST
+    @Path("CCAM/{no}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response editCCAM(CCAM no) {
+        serv.editCCAM(no);
+        return Response.status(200).entity(no).build();
+    }
+    
+    //Editer une admission
+    @POST
+    @Path("admission/{ad}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response editadmission(Admission ad) {
+        serv.editAdmission(ad);
+        return Response.status(200).entity(ad).build();
+    }
+    
     
     //Obtenir un CCAM
     @GET
@@ -260,8 +280,9 @@ public class RestServices {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces("application/json")
     public Appareil newAppareil(Appareil appa){
-        serv.newAppareil(appa.getAppareilLibelle(), appa.getAppareilModalite());
-        System.out.println("L'appareil "+appa.getAppareilLibelle()+"a été ajouté ");
+        serv.newAppareil2(appa);
+//        serv.newAppareil(appa.getAppareilLibelle(), appa.getAppareilModalite());
+//        System.out.println("L'appareil "+appa.getAppareilLibelle()+"a été ajouté ");
         return appa;
     }
     
@@ -283,8 +304,8 @@ public class RestServices {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces("application/json")
     public CCAM newCCAM(CCAM ccam){
-        serv.newCCAM(ccam.getCCAMLibelle(), ccam.getCCAMCode());
-        System.out.println("La nomenclature "+ccam.getCCAMLibelle()+"a été ajoutée ");
+        serv.newCCAM2(ccam);
+        //System.out.println("La nomenclature "+ccam.getCCAMLibelle()+"a été ajoutée ");
         return ccam;
     }
     
@@ -294,8 +315,8 @@ public class RestServices {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces("application/json")
     public ImageRadiologique newImageRadiologique(ImageRadiologique im){
-        serv.newImageRadiologique(im.getImageRadiologiqueFormat(), im.getImageRadiologiqueLibelle(), im.getImageRadiologiquePoids(), im.getImageRadiologiqueURL());
-        System.out.println("L'image "+im.getImageRadiologiqueLibelle()+"a été ajoutée ");
+        serv.newImageRadiologique2(im);
+        //System.out.println("L'image "+im.getImageRadiologiqueLibelle()+"a été ajoutée ");
         return im;
     }
     
@@ -305,17 +326,17 @@ public class RestServices {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces("application/json")
     public Admission newAdmission(Admission ad){
-        serv.newAdmission(ad.getAdmissionIPP());
-        System.out.println("L'admission "+ad.getAdmissionIPP()+"a été ajoutée ");
+        serv.newAdmission2(ad);
+        //System.out.println("L'admission "+ad.getAdmissionIPP()+"a été ajoutée ");
         return ad;
     }
     
     //Supprimer un appareil
     @DELETE
-    @Path("appareil/{id}")
-    public Response removeAppareil(@PathParam("id") int appareilId) {
+    @Path("appareil")
+    public Response removeAppareil(Appareil ap) {
         System.out.println("coucou ");
-        serv.removeAppareil(appareilId);
+        serv.removeAppareil(ap);
         return Response.status(200).build();
     }
     

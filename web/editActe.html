@@ -42,4 +42,26 @@ and open the template in the editor.
         </table>
     </td>
 </tr>
+<tr height='150px'><td></td><td></td></tr>
+<tr>
+    <tr><h2>Ajouter une image à l'acte<h2/></tr>
+    <table>
+        <tr>
+            <th> Id </th>
+            <th> Format </th>
+            <th> Libellé </th>
+            <th> Poids </th>
+            <th> URL </th>
+            <th> Aperçu </th>
+        <tr ng-repeat='im in ctrl.image'>
+            <td> {{ im.imageRadiologiqueId}} </td>
+            <td> {{ im.imageRadiologiqueFormat}} </td>
+            <td> {{ im.imageRadiologiqueLibelle}} </td>
+            <td> {{ im.imageRadiologiquePoids}} </td>
+            <td> {{ im.imageRadiologiqueURL}} </td>
+            <td><img src="{{ im.imageRadiologiqueURL}}" style="width:128px; height:128px;"/></td>
+            <td> <input type="button" value="Ajouter à l'acte" ng-click=""/> 
+        </tr>
+    </table>
+</tr>
 </table>

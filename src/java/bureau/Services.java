@@ -183,6 +183,13 @@ public class Services {
         em.getTransaction().commit();
         return a;
     }
+    
+    public Admission newAdmission2(Admission ad) {
+        em.getTransaction().begin();
+        em.merge(ad);
+        em.getTransaction().commit();
+        return ad;
+    }
 
     public Admission getAdmissionById(Long iep) {
         Admission adm = em.find(Admission.class, iep);
@@ -240,6 +247,12 @@ public class Services {
         em.getTransaction().commit();
         return a;
     }
+    public Appareil newAppareil2(Appareil a) {
+        em.getTransaction().begin();
+        em.merge(a);
+        em.getTransaction().commit();
+        return a;
+    }
 
     public Appareil getAppareilByID(int appareilId) {
         Appareil ap = em.find(Appareil.class, appareilId);
@@ -260,11 +273,11 @@ public class Services {
         return res;
     }
 
-    public void removeAppareil(int appareilId) {
+    public void removeAppareil(Appareil ap) {
 
-        Appareil ap = em.find(Appareil.class, appareilId);
+        Appareil appa = em.find(Appareil.class, ap.getAppareilId());
         em.getTransaction().begin();
-        em.remove(ap);
+        em.remove(appa);
         em.getTransaction().commit();
 
     }
@@ -286,6 +299,13 @@ public class Services {
         em.persist(a);
         em.getTransaction().commit();
         return a;
+    }
+     
+    public CCAM newCCAM2(CCAM ca) {
+        em.getTransaction().begin();
+        em.merge(ca);
+        em.getTransaction().commit();
+        return ca;
     }
 
     public CCAM getCCAMById(Long CCAMid) {
@@ -333,6 +353,13 @@ public class Services {
         em.persist(a);
         em.getTransaction().commit();
         return a;
+    }
+    
+    public ImageRadiologique newImageRadiologique2(ImageRadiologique im) {
+        em.getTransaction().begin();
+        em.merge(im);
+        em.getTransaction().commit();
+        return im;
     }
 
     public ImageRadiologique getImageRadiologiqueById(Long imageRadiologiqueId) {
