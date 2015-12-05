@@ -121,7 +121,7 @@ public class Services {
         em.getTransaction().commit();
     }
 
-    //Acte Radiologique
+    //Acte Radiologique : service non utilisé
     public ActeRadiologique newActeRadiologique(Date dateActe, Admission ad, List<ImageRadiologique> images, Appareil appareil, CCAM CCAM) {
         ActeRadiologique a = new ActeRadiologique();
         a.setActeRadiologiqueDate(new java.util.Date());

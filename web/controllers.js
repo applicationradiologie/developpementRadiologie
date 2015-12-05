@@ -30,15 +30,20 @@ angular.module('monApp').controller('ActeRadiologiqueNewController', ['ActeRadio
         };
     }]);
 
-angular.module('monApp').controller('ActeRadiologiqueEditController', ['$routeParams', 'ActeRadiologique',
-    function ($routeParams, ActeRadiologique) {
-        this.acte = ActeRadiologique.get({ipp: $routeParams.ipp});
+angular.module('monApp').controller('ActeRadiologiqueEditController', ['$routeParams', 'ActeRadiologique','CCAM', 'Appareil', 'Admission', '$location',
+    function ($routeParams, ActeRadiologique, CCAM, Appareil, Admission, $location) {
+        this.acte = ActeRadiologique.get({id: $routeParams.ac});
+        this.oldacte = ActeRadiologique.get({id: $routeParams.ac});
+        this.ccam = CCAM.query();
+        this.appa = Appareil.query();
+        this.admi = Admission.query();
+        console.log("routeparam:"+$routeParams.ac);
         this.update = function () {
             // appel POST asynchrone au service web sur /crayons/{id} 
             this.acte.$save();
+            $location.path("/");
         };
-    }
-]);
+    }]);
 
 angular.module('monApp').controller('AppareilController', ['Appareil',
     function (Appareil) {
@@ -132,7 +137,7 @@ angular.module('monApp').controller('CCAMNewController', ['CCAM', '$location',
 
 angular.module('monApp').controller('CCAMEditController', ['$routeParams', 'CCAM', '$location',
     function ($routeParams, CCAM, $location) {
-        this.ccam = CCAM.get({idCCAM: $routeParams.no});
+        this.ccam = CCAM.get({id: $routeParams.no});
         this.update = function () {
             // appel POST asynchrone au service web sur /crayons/{id} 
             this.ccam.$save();
@@ -164,9 +169,12 @@ angular.module('monApp').controller('ImageNewController', ['ImageRadiologique', 
 
 angular.module('monApp').controller('ImageEditController', ['$routeParams', 'ImageRadiologique', '$location',
     function ($routeParams, ImageRadiologique, $location) {
-        this.image = ImageRadiologique.get({imageRadiologiqueId: $routeParams.im});
+        this.im = ImageRadiologique.get({id: $routeParams.im});
+
+        console.log("routeparam:"+$routeParams.im);
         this.update = function () {
-            this.image.$save();
+            // appel POST asynchrone au service web sur /crayons/{id} 
+            this.im.$save();
             $location.path("/");
         };
     }]);
@@ -194,7 +202,7 @@ angular.module('monApp').controller('AdmissionNewController', ['Admission', '$lo
 
 angular.module('monApp').controller('AdmissionEditController', ['$routeParams', 'Admission', '$location',
     function ($routeParams, CCAM, $location) {
-        this.admission = CCAM.get({admissionIEP: $routeParams.iep});
+        this.admission = CCAM.get({id: $routeParams.iep});
         this.update = function () {
             // appel POST asynchrone au service web sur /crayons/{id} 
             this.admission.$save();

@@ -26,11 +26,11 @@
             <th> IEP Admi </th>
             <th> Appareil </th>
         <tr ng-repeat='ac in ctrl.acte'>
-            <td> {{ ac.acteRadiologiquePACS}} </td>
-            <td> {{ ac.acteRadiologiqueDate}} </td>
-            <td> {{ ac.CCAM_CCAMid}} </td>
-            <td> {{ ac.admission_admissionIEP}} </td>
-            <td> {{ ac.appareil.appareilLibelle}} </td>
+            <td> {{ ac.acteRadiologiquePACS}} </td>&nbsp
+            <td> {{ ac.acteRadiologiqueDate}} </td>&nbsp
+            <td> {{ ac.CCAM.CCAMLibelle}} </td>&nbsp
+            <td> {{ ac.admission.admissionIEP}} </td>&nbsp
+            <td> {{ ac.appareil.appareilLibelle}} </td>&nbsp
             <td> <a ng-href="#/acteEdition/{{ac.acteRadiologiquePACS}}"/> Editer </a>
             <td> <input type="button" value="Supprimer" ng-click="ctrl.delete(ac)"/> 
         </tr>

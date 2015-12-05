@@ -5,11 +5,11 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <form novalidate class="simple-form">
-    <h3> Edition de l'image {{ ctrl.image.imageRadiologiqueId }} </h3>
+    <h3> Edition de l'image {{ ctrl.im.imageRadiologiqueId }} </h3>
    
-    Format: <input type="text" ng-model="ctrl.image.imageRadiologiqueFormat" /><br />
-    Libelle: <input type="text" ng-model="ctrl.image.imageRadiologiqueLibelle" /><br />
-    Poids : <input type="text" ng-model="ctrl.image.imageRadiologiquePoids" /><br />
-    URL: <input type="text" ng-model="ctrl.image.imageRadiologiqueURL" /><br />
+    Format: <input type="text" ng-model="ctrl.im.imageRadiologiqueFormat" /><br />
+    Libelle: <input type="text" ng-model="ctrl.im.imageRadiologiqueLibelle" /><br />
+    Poids : <input type="text" ng-model="ctrl.im.imageRadiologiquePoids" /><br />
+    URL: <input type="text" ng-model="ctrl.im.imageRadiologiqueURL" /><br />
     <input type="submit" ng-click="ctrl.update()" value="Save" />
 </form>

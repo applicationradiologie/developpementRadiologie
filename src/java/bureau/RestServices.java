@@ -109,7 +109,6 @@ public class RestServices {
     @Produces("application/json")
     public List<ActeRadiologique> getActeRadiologiques(@PathParam("ipp") String ipp) {
         //TODO return proper representation object
-        Services serv = new Services(DatabaseUtils.fact());
         return serv.getActeRadiologiqueByAdmission(ipp);
     }
     
@@ -122,11 +121,20 @@ public class RestServices {
         return serv.getAllActeRadiologique();
     }
     
+    //Obtenir un acte
+    @GET
+    @Path("acteradiologique/{act}")
+    @Produces("application/json")
+    public ActeRadiologique getActeById(@PathParam("act") Long act) {
+        //TODO return proper representation object
+        return serv.getActeRadiologique(act);
+    }
+    
     //Obtenir une admission OK
     @GET
     @Path("admission/{iep}")
     @Produces("application/json")
-    public Admission getAdmissions(@PathParam("iep") Long iep) {
+    public Admission getAdmissionById(@PathParam("iep") Long iep) {
         //TODO return proper representation object
         return serv.getAdmissionById(iep);
     }
@@ -135,7 +143,7 @@ public class RestServices {
     @GET
     @Path("admission")
     @Produces("application/json")
-    public List<Admission> getAdmissions() {
+    public List<Admission> getAllAdmissions() {
         //TODO return proper representation object
         return serv.getAllAdmission();
     }
@@ -218,6 +226,15 @@ public class RestServices {
     public List<ImageRadiologique> getImageRadiologique() {
         //TODO return proper representation object
         return serv.getAllImageRadiologique();
+    }
+    
+    //Obtenir une image
+    @GET
+    @Path("imageradiologique/{im}")
+    @Produces("application/json")
+    public ImageRadiologique getImageRadiologiqueById(@PathParam("im") Long imageRadiologiqueId) {
+        //TODO return proper representation object
+        return serv.getImageRadiologiqueById(imageRadiologiqueId);
     }
    
     

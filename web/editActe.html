@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<table>
+    <tr>
+    <h3> Edition de l'acte {{ ctrl.acte.acteRadiologiquePACS}} </h3>
+</tr>
+<tr>
+    <td>
+        <h3>Valeur Actuelle</h3>
+        <table>
+            <form novalidate class="simple-form">
+                <tr><td>Date:</td><td> {{ ctrl.oldacte.acteRadiologiqueDate}}<br /></td></tr>
+                <tr><td>CCAM:</td><td>{{ctrl.oldacte.CCAM.CCAMLibelle}}<br /></td></tr>
+                <tr><td>IEP Admi: </td><td>{{ctrl.oldacte.admission.admissionIEP}}<br /></td></tr>
+                <tr><td>Appareil:</td><td> {{ctrl.oldacte.appareil.appareilLibelle}}<br /></td></tr>
+            </form>
+        </table>
+
+    </td>
+    <td width="30%"></td>
+    <td>
+        <h3>Modifier les valeurs</h3>
+        <table>
+            <form novalidate class="simple-form">
+                <tr><td>Date:</td><td><input type="date" ng-model="ctrl.acte.acteRadiologiqueDate"><br /></td></tr>
+                <tr><td>CCAM:</td><td><div class="input-control select">
+                            <SELECT class="form-control" ng-options='no.CCAMLibelle for no in ctrl.ccam' ng-model="ctrl.acte.CCAM"></SELECT>
+                        </div><br /></td></tr>
+                <tr><td>IEP Admi:</td><td><div class="input-control select">
+                            <SELECT class="form-control" ng-options='ad.admissionIPP for ad in ctrl.admi' ng-model="ctrl.acte.admission"></SELECT>
+                        </div><br /></td></tr>
+                <tr><td>Appareil:</td><td> <div class="input-control select">
+                            <SELECT class="form-control" ng-options='ap.appareilLibelle for ap in ctrl.appa' ng-model="ctrl.acte.appareil"></SELECT>
+                        </div><br /></td></tr>
+                <tr><td></td><td><input type="submit" ng-click="ctrl.update()" value="Enregistrer l'acte avec les nouvelles valeurs" /></td></tr>
+            </form>
+        </table>
+    </td>
+</tr>
+</table>

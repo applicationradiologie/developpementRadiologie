@@ -3,10 +3,12 @@
 /* global angular */
 
 angular.module('monApp').factory('ActeRadiologique', ['$resource', function ($resource) {
-
-        //  voir https://docs.angularjs.org/api/ngResource/service/$resource pour la doc de cet objet
-        return $resource('/bureau/webresources/generic/acteradiologique/:acteRadiologiquePACS', {acteRadiologiquePACS: '@acteRadiologiquePACS'});
-
+        return $resource('/bureau/webresources/generic/acteradiologique/:id', {id: '@id'},{
+            'get': {method: 'GET', isArray: false},
+            'save': {method: 'POST'},
+            'query': {method: 'GET', isArray: true},
+            'remove': {method: 'DELETE'},
+            'delete': {method: 'DELETE'}});
     }]);
 
 angular.module('monApp').factory('Appareil', ['$resource', function ($resource) {
@@ -28,7 +30,7 @@ angular.module('monApp').factory('Crayons', ['$resource', function ($resource) {
     }]);
 
 angular.module('monApp').factory('NomemclatureCCAM', ['$resource', function ($resource) {
-        return $resource('/bureau/webresources/generic/nomemclatureCCAM/:no', {no: '@nomenclatureCCAMId'},{
+        return $resource('/bureau/webresources/generic/nomemclatureCCAM/:id', {id: '@id'},{
             'get': {method: 'GET', isArray: false},
             'save': {method: 'POST'},
             'query': {method: 'GET', isArray: true},
@@ -37,7 +39,7 @@ angular.module('monApp').factory('NomemclatureCCAM', ['$resource', function ($re
     }]);
 
 angular.module('monApp').factory('ImageRadiologique', ['$resource', function ($resource) {
-        return $resource('/bureau/webresources/generic/imageradiologique/:im', {im: '@imageRadiologiqueId'},{
+        return $resource('/bureau/webresources/generic/imageradiologique/:id', {id: '@id'},{
             'get': {method: 'GET', isArray: false},
             'save': {method: 'POST'},
             'query': {method: 'GET', isArray: true},
@@ -46,7 +48,7 @@ angular.module('monApp').factory('ImageRadiologique', ['$resource', function ($r
     }]);
 
 angular.module('monApp').factory('CCAM', ['$resource', function ($resource) {
-        return $resource('/bureau/webresources/generic/CCAM/:no', {no: '@idCCAM'},{
+        return $resource('/bureau/webresources/generic/CCAM/:id', {id: '@id'},{
             'get': {method: 'GET', isArray: false},
             'save': {method: 'POST'},
             'query': {method: 'GET', isArray: true},
@@ -55,7 +57,7 @@ angular.module('monApp').factory('CCAM', ['$resource', function ($resource) {
     }]);
 
 angular.module('monApp').factory('Admission', ['$resource', function ($resource) {
-        return $resource('/bureau/webresources/generic/admission/:iep', {iep: '@admissionIEP'},{
+        return $resource('/bureau/webresources/generic/admission/:id', {id: '@id'},{
             'get': {method: 'GET', isArray: false},
             'save': {method: 'POST'},
             'query': {method: 'GET', isArray: true},
