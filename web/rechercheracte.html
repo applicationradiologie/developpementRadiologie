@@ -31,7 +31,8 @@
             <td> {{ ac.CCAM.CCAMLibelle}} </td>&nbsp
             <td> {{ ac.admission.admissionIEP}} </td>&nbsp
             <td> {{ ac.appareil.appareilLibelle}} </td>&nbsp
-            <td> <a ng-href="#/acteEdition/{{ac.acteRadiologiquePACS}}"/> Editer </a>
+            <td> <a ng-href="#/acteEdition/{{ac.acteRadiologiquePACS}}"/><input type="button" value="Editer"/></a>
+            <td> <a ng-href="#/ajoutImageActe/{{ac.acteRadiologiquePACS}}"/><input type="button" value="Ajouter des images"/></a>
             <td> <input type="button" value="Supprimer" ng-click="ctrl.delete(ac)"/> 
         </tr>
     </table>

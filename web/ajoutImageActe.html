@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <table>
+            <tr>
+                <td>
+                    <h2>Ajout d'image à l'acte {{ ctrl.acte.acteRadiologiquePACS}}</h2>
+                    <form novalidate class="simple-form">
+                        <table>
+
+                            <tr><td>Image:</td><td> <div class="input-control select">
+                                        <select  ng-model="ctrl.ImageSelect" ng-options="im.imageRadiologiqueLibelle for im in ctrl.image">
+                                        </select>
+                                    </div><br /></td></tr>
+                            <tr><td></td><td><input type="submit" ng-click="ctrl.updateImage()" value="Ajouter l'image" /></td></tr>
+
+                        </table>
+                    </form>
+                </td>
+                <td>
+                    <table>
+                        <tr>
+                            <th> Id </th>
+                            <th> Format </th>
+                            <th> Libellé </th>
+                            <th> Poids </th>
+                            <th> URL </th>
+                            <th> Aperçu </th>
+                        <tr ng-repeat='im in ctrl.image'>
+                            <td> {{ im.imageRadiologiqueId}} </td>
+                            <td> {{ im.imageRadiologiqueFormat}} </td>
+                            <td> {{ im.imageRadiologiqueLibelle}} </td>
+                            <td> {{ im.imageRadiologiquePoids}} </td>
+                            <td> {{ im.imageRadiologiqueURL}} </td>
+                            <td><img src="{{ im.imageRadiologiqueURL}}" style="width:128px; height:128px;"/></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

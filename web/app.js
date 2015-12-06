@@ -84,5 +84,9 @@ angular.module('monApp').config(['$routeProvider', function routeConfig($routePr
                     controller: "ActeRadiologiqueEditController as ctrl",
                     templateUrl: 'editActe.html'
                 })
+                .when('/ajoutImageActe/:ac', {
+                    controller: "AjoutImageActeController as ctrl",
+                    templateUrl: 'ajoutImageActe.html'
+                })
                 .otherwise({redirectTo: '/'});
     }]);

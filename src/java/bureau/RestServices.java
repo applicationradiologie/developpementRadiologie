@@ -265,14 +265,15 @@ public class RestServices {
     @Produces("application/json")
     public ActeRadiologique newActeRadiologique(ActeRadiologique act) {
         System.out.println(act);
-        List<ImageRadiologique> images;
-        images = new ArrayList<>();
-        act.setImages(images);
+//        List<ImageRadiologique> images;
+//        images = new ArrayList<>();
+//        act.setImages(images);
         serv.newActeRadiologique2(act);
         
         //System.out.println("Acte radiologique créé le " + act.getActeRadiologiqueDate()+ " pour l'admission "+ act.getAdmission().getAdmissionIEP());
         return act;
     }
+    
     
     //Créer une modalité d'imagerie OK
     @POST
@@ -367,17 +368,17 @@ public class RestServices {
     
     
     //Ajouter une image à un acte --> LE coupable !!!!!!!!!!!!
-    /*
-    @POST
-    @Path("acteradiologique/{iep}")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces("application/json")
-    public Response updateActeRadiologiqueImage (ActeRadiologique act, ImageRadiologique img)
-    {
-        serv.updateActeRadiologiqueImage(act, img);
-        return Response.status(200).entity(act).build();
-    }
-    */
+
+//    @POST
+//    @Path("acteradiologique/{iep}")
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    @Produces("application/json")
+//    public Response updateActeRadiologiqueImage (ActeRadiologique act, ImageRadiologique img)
+//    {
+//        serv.updateActeRadiologiqueImage(act, img);
+//        return Response.status(200).entity(act).build();
+//    }
+
     
     
    

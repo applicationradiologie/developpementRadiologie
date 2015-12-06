@@ -18,6 +18,12 @@ and open the template in the editor.
                 <tr><td>CCAM:</td><td>{{ctrl.oldacte.CCAM.CCAMLibelle}}<br /></td></tr>
                 <tr><td>IEP Admi: </td><td>{{ctrl.oldacte.admission.admissionIEP}}<br /></td></tr>
                 <tr><td>Appareil:</td><td> {{ctrl.oldacte.appareil.appareilLibelle}}<br /></td></tr>
+                <tr ng-repeat='im in ctrl.oldacte.image' >
+                    <td> {{ im.imageRadiologiqueId}} </td>
+                    <td> {{ im.imageRadiologiqueFormat}} </td>
+                    <td> {{ im.imageRadiologiqueLibelle}} </td>
+                    <td> {{ im.imageRadiologiquePoids}} </td>
+                    <td> {{ im.imageRadiologiqueURL}} </td>
             </form>
         </table>
 
@@ -37,6 +43,11 @@ and open the template in the editor.
                 <tr><td>Appareil:</td><td> <div class="input-control select">
                             <SELECT class="form-control" ng-options='ap.appareilLibelle for ap in ctrl.appa' ng-model="ctrl.acte.appareil"></SELECT>
                         </div><br /></td></tr>
+                 <tr><td>Image:</td><td> <div class="input-control select">
+                             <select  ng-model="ctrl.ImageSelect" ng-options="im.imageRadiologiqueLibelle for im in ctrl.image">
+                            </select>
+                        </div><br /></td></tr>
+                 <tr><td><img src="#" alt="" id='avoir' /></td></tr>
                 <tr><td></td><td><input type="submit" ng-click="ctrl.update()" value="Enregistrer l'acte avec les nouvelles valeurs" /></td></tr>
             </form>
         </table>
@@ -44,7 +55,7 @@ and open the template in the editor.
 </tr>
 <tr height='150px'><td></td><td></td></tr>
 <tr>
-    <tr><h2>Ajouter une image à l'acte<h2/></tr>
+<tr><h2>Ajouter une image à l'acte<h2/></tr>
     <table>
         <tr>
             <th> Id </th>
@@ -53,15 +64,15 @@ and open the template in the editor.
             <th> Poids </th>
             <th> URL </th>
             <th> Aperçu </th>
-        <tr ng-repeat='im in ctrl.image'>
+        <tr  ng-model='ctrl.ImageSelect' ng-repeat='im in ctrl.image'>
             <td> {{ im.imageRadiologiqueId}} </td>
             <td> {{ im.imageRadiologiqueFormat}} </td>
             <td> {{ im.imageRadiologiqueLibelle}} </td>
             <td> {{ im.imageRadiologiquePoids}} </td>
             <td> {{ im.imageRadiologiqueURL}} </td>
             <td><img src="{{ im.imageRadiologiqueURL}}" style="width:128px; height:128px;"/></td>
-            <td> <input type="button" value="Ajouter à l'acte" ng-click=""/> 
+            <td><td/> 
         </tr>
     </table>
-</tr>
+    </tr>
 </table>
