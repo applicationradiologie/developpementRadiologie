@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<form novalidate class="simple-form">
+    <h3> Liste des actes pour l'admission {{ ctrl.admission.admissionIEP }} </h3>
+    <table>
+        <tr>
+            <th> Id (PACS) </th>
+            <th> Date</th>
+            <th> CCAM </th>
+            <th> IEP Admi </th>
+            <th> Appareil </th>
+        <tr ng-repeat='ac in ctrl.acte'>
+            <td> {{ ac.acteRadiologiquePACS}} </td>&nbsp
+            <td> {{ ac.acteRadiologiqueDate}} </td>&nbsp
+            <td> {{ ac.CCAM.CCAMLibelle}} </td>&nbsp
+            <td> {{ ac.admission.admissionIEP}} </td>&nbsp
+            <td> {{ ac.appareil.appareilLibelle}} </td>&nbsp
+            <td> <a ng-href="#/acteEdition/{{ac.acteRadiologiquePACS}}"/><input type="button" value="Editer"/></a>
+            <td> <a ng-href="#/ajoutImageActe/{{ac.acteRadiologiquePACS}}"/><input type="button" value="Ajouter des images"/></a>
+            <td> <input type="button" value="Supprimer" ng-click="ctrl.delete(ac)"/> 
+        </tr>
+    </table>
+</form>

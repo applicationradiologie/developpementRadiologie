@@ -23,10 +23,9 @@ import static javax.ws.rs.HttpMethod.POST;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-
-
 
 /**
  * REST Web Service
@@ -39,19 +38,19 @@ public class RestServices {
     @Context
     private UriInfo context;
     Services serv;
-   
+
     /**
      * Creates a new instance of GenericResource
      */
     public RestServices() {
-       serv = new Services(DatabaseUtils.fact());
+        serv = new Services(DatabaseUtils.fact());
     }
 
     /**
      * Retrieves representation of an instance of bureau.RestServices
+     *
      * @return an instance of java.lang.String
      */
-    
     @GET
     @Path("crayons/{id}")
     @Produces("application/json")
@@ -59,13 +58,13 @@ public class RestServices {
         //TODO return proper representation object
         return serv.getCrayonsById(id);
     }
-    
+
     @GET
     @Path("crayons")
     @Produces("application/json")
     public List<Crayon> getAllCrayons() {
         //TODO return proper representation object
-         return serv.getAllCrayons();
+        return serv.getAllCrayons();
     }
 
     @GET
@@ -75,17 +74,17 @@ public class RestServices {
         //TODO return proper representation object
         return serv.getAllBoites();
     }
-    
+
     @POST
     @Path("crayons")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces("application/json")
     public Crayon newCrayon(Crayon cr) {
         serv.newCrayon(cr);
-        System.out.println("id:"+cr.getId());
+        System.out.println("id:" + cr.getId());
         return cr;
     }
-    
+
     @POST
     @Path("crayons/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -93,7 +92,7 @@ public class RestServices {
         serv.editCrayon(cr);
         return Response.status(200).entity(cr).build();
     }
-    
+
     @DELETE
     @Path("crayons/{id}")
     public Response removeCrayon(@PathParam("id") int id) {
@@ -101,26 +100,33 @@ public class RestServices {
         return Response.status(200).build();
     }
     /*
-    //-----------------------RADIOLOGIE-----------------------
-    */
+     //-----------------------RADIOLOGIE-----------------------
+     */
+
     //Afficher les actes radiologiques par admission OK
+
     @GET
     @Path("actes/{ipp}")
     @Produces("application/json")
-    public List<ActeRadiologique> getActeRadiologiques(@PathParam("ipp") String ipp) {
+    public List<ActeRadiologique> getActeRadiologiquesByAdmission(@PathParam("ipp") Long iep) {
         //TODO return proper representation object
-        return serv.getActeRadiologiqueByAdmission(ipp);
+        return serv.getActeRadiologiqueByAdmission(iep);
     }
-    
-    //Afficher les actes radiologiques par admission OK
+
+    //Afficher tous les actes OK
     @GET
     @Path("acteradiologique")
     @Produces("application/json")
-    public List<ActeRadiologique> getAllActeRadiologiques() {
+    public List<ActeRadiologique> getAllActeRadiologiques(@DefaultValue("") @QueryParam("ad") Long ad) {
         //TODO return proper representation object
-        return serv.getAllActeRadiologique();
+        System.out.println("Valeur du query params : " + ad);
+        if (ad != null) {
+            return serv.getActeRadiologiqueByAdmission(ad);
+        } else {
+            return serv.getAllActeRadiologique();
+        }
     }
-    
+
     //Obtenir un acte
     @GET
     @Path("acteradiologique/{act}")
@@ -129,7 +135,7 @@ public class RestServices {
         //TODO return proper representation object
         return serv.getActeRadiologique(act);
     }
-    
+
     //Obtenir une admission OK
     @GET
     @Path("admission/{iep}")
@@ -138,7 +144,7 @@ public class RestServices {
         //TODO return proper representation object
         return serv.getAdmissionById(iep);
     }
-    
+
     //Obtenir toutes les admissions
     @GET
     @Path("admission")
@@ -147,28 +153,24 @@ public class RestServices {
         //TODO return proper representation object
         return serv.getAllAdmission();
     }
-    
-    
-   
-     
+
     //Consulter les images d'un patient OK
     @GET
     @Path("acteradiologiqueimages/{ipp}")
     @Produces("application/json")
-    public List<ImageRadiologique> getImagesByAdmission(@PathParam("ipp") String ipp){
-         return serv.getImagesByAdmission(ipp);
+    public List<ImageRadiologique> getImagesByAdmission(@PathParam("ipp") String ipp) {
+        return serv.getImagesByAdmission(ipp);
     }
-    
-    
+
     //Consulter les images d'un patient OK
     @GET
     @Path("appareil/{appa}")
     @Produces("application/json")
-    public Appareil getAppareil(@PathParam("appa") int appareilId){
+    public Appareil getAppareil(@PathParam("appa") int appareilId) {
         System.out.println("passage1");
-         return serv.getAppareilByID(appareilId);
+        return serv.getAppareilByID(appareilId);
     }
-    
+
     //Obtenir tous les appareils
     @GET
     @Path("appareil")
@@ -179,7 +181,7 @@ public class RestServices {
         System.out.println(serv.getAppareilByID(3).getAppareilLibelle().toString());
         return serv.getAllAppareil();
     }
-    
+
     //Editer un appareil
     @POST
     @Path("appareil/{appa}")
@@ -189,7 +191,7 @@ public class RestServices {
         serv.editAppareil(appa);
         return Response.status(200).entity(appa).build();
     }
-    
+
     //Editer un CCAM
     @POST
     @Path("CCAM/{no}")
@@ -198,7 +200,7 @@ public class RestServices {
         serv.editCCAM(no);
         return Response.status(200).entity(no).build();
     }
-    
+
     //Editer une admission
     @POST
     @Path("admission/{ad}")
@@ -207,8 +209,7 @@ public class RestServices {
         serv.editAdmission(ad);
         return Response.status(200).entity(ad).build();
     }
-    
-    
+
     //Obtenir un CCAM
     @GET
     @Path("CCAM/{no}")
@@ -217,7 +218,7 @@ public class RestServices {
         //TODO return proper representation object
         return serv.getCCAMById(idCCAM);
     }
-    
+
     //Obtenir tous les CCAM (le bon)
     @GET
     @Path("CCAM")
@@ -228,7 +229,7 @@ public class RestServices {
         System.out.println(serv.getAppareilByID(3).getAppareilModalite().toString());
         return serv.getAllCCAM();
     }
-    
+
     //Obtenir toutes les nomenclature
     //NE PLUS UTILISER
     @GET
@@ -238,7 +239,7 @@ public class RestServices {
         //TODO return proper representation object
         return serv.getAllNomemclatureCCAM();
     }
-    
+
     //Obtenir toutes les images
     @GET
     @Path("imageradiologique")
@@ -247,7 +248,7 @@ public class RestServices {
         //TODO return proper representation object
         return serv.getAllImageRadiologique();
     }
-    
+
     //Obtenir une image
     @GET
     @Path("imageradiologique/{im}")
@@ -256,8 +257,7 @@ public class RestServices {
         //TODO return proper representation object
         return serv.getImageRadiologiqueById(imageRadiologiqueId);
     }
-   
-    
+
     //Créer un acte radiologique OK
     @POST
     @Path("acteradiologique")
@@ -269,69 +269,68 @@ public class RestServices {
 //        images = new ArrayList<>();
 //        act.setImages(images);
         serv.newActeRadiologique2(act);
-        
+
         //System.out.println("Acte radiologique créé le " + act.getActeRadiologiqueDate()+ " pour l'admission "+ act.getAdmission().getAdmissionIEP());
         return act;
     }
-    
-    
+
     //Créer une modalité d'imagerie OK
     @POST
     @Path("appareil")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces("application/json")
-    public Appareil newAppareil(Appareil appa){
+    public Appareil newAppareil(Appareil appa) {
         serv.newAppareil2(appa);
 //        serv.newAppareil(appa.getAppareilLibelle(), appa.getAppareilModalite());
 //        System.out.println("L'appareil "+appa.getAppareilLibelle()+"a été ajouté ");
         return appa;
     }
-    
+
     //Créer une nomenclature CCAM 
     //NE PLUS UTILISER
     @POST
     @Path("nomemclatureCCAM")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces("application/json")
-    public NomemclatureCCAM newNomemclature(NomemclatureCCAM no){
+    public NomemclatureCCAM newNomemclature(NomemclatureCCAM no) {
         serv.newNomemclatureCCAM(no.getNomenclatureCCAMLibelle(), no.getNomemclatureCCAMCode());
-        System.out.println("La nomemclature "+no.getNomenclatureCCAMLibelle()+"a été ajoutée ");
+        System.out.println("La nomemclature " + no.getNomenclatureCCAMLibelle() + "a été ajoutée ");
         return no;
     }
-    
-     //Créer une nomenclature CCAM (le bon)
+
+    //Créer une nomenclature CCAM (le bon)
     @POST
     @Path("CCAM")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces("application/json")
-    public CCAM newCCAM(CCAM ccam){
+    public CCAM newCCAM(CCAM ccam) {
         serv.newCCAM2(ccam);
         //System.out.println("La nomenclature "+ccam.getCCAMLibelle()+"a été ajoutée ");
         return ccam;
     }
-    
-     //Créer une image
+
+    //Créer une image
     @POST
     @Path("imageradiologique")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces("application/json")
-    public ImageRadiologique newImageRadiologique(ImageRadiologique im){
+    public ImageRadiologique newImageRadiologique(ImageRadiologique im) {
         serv.newImageRadiologique2(im);
         //System.out.println("L'image "+im.getImageRadiologiqueLibelle()+"a été ajoutée ");
         return im;
     }
-    
+
     //Créer une admission
     @POST
     @Path("admission")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces("application/json")
-    public Admission newAdmission(Admission ad){
+    public Admission newAdmission(Admission ad) {
         serv.newAdmission2(ad);
         //System.out.println("L'admission "+ad.getAdmissionIPP()+"a été ajoutée ");
         return ad;
     }
-    
+
     //Supprimer un appareil
     @DELETE
     @Path("appareil")
@@ -340,7 +339,7 @@ public class RestServices {
         serv.removeAppareil(ap);
         return Response.status(200).build();
     }
-    
+
     //Supprimer une image
     @DELETE
     @Path("imageradiologique/{im}")
@@ -348,7 +347,7 @@ public class RestServices {
         serv.removeImageRadiologique(imageRadiologiqueId);
         return Response.status(200).build();
     }
-    
+
     //Supprimer un CCAM
     @DELETE
     @Path("CCAM/{no}")
@@ -356,7 +355,7 @@ public class RestServices {
         serv.removeCCAM(CCAMid);
         return Response.status(200).build();
     }
-    
+
     //Supprimer une admission
     @DELETE
     @Path("admission/{iep}")
@@ -364,11 +363,8 @@ public class RestServices {
         serv.removeAdmission(admissionIEP);
         return Response.status(200).build();
     }
-    
-    
-    
-    //Ajouter une image à un acte --> LE coupable !!!!!!!!!!!!
 
+    //Ajouter une image à un acte --> LE coupable !!!!!!!!!!!!
 //    @POST
 //    @Path("acteradiologique/{iep}")
 //    @Consumes(MediaType.APPLICATION_JSON)
@@ -378,8 +374,4 @@ public class RestServices {
 //        serv.updateActeRadiologiqueImage(act, img);
 //        return Response.status(200).entity(act).build();
 //    }
-
-    
-    
-   
 }

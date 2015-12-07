@@ -211,9 +211,9 @@ public class bureauTest {
         assertNotNull(a);
 
         //Test de récuperation l'acte radiogique d'une admission
-        List<ActeRadiologique> actes = serv.getActeRadiologiqueByAdmission("4454fd1fdsfsd");
-        assert (!actes.isEmpty());
-        assert (actes.get(0).getAdmission().getAdmissionIEP() == iep);
+        //List<ActeRadiologique> actes = serv.getActeRadiologiqueByAdmission("4454fd1fdsfsd");
+//        assert (!actes.isEmpty());
+//        assert (actes.get(0).getAdmission().getAdmissionIEP() == iep);
 
         //Test d'ajout d'une image à un acte radiollogique
         ImageRadiologique im5 = serv.newImageRadiologique("http://www.radiologie-luton-reims.fr/imageszoom/image003.gif", "gif", "56KoB", "Main");

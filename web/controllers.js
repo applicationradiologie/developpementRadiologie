@@ -58,14 +58,22 @@ angular.module('monApp').controller('AjoutImageActeController', ['$routeParams',
         this.acte = ActeRadiologique.get({id: $routeParams.ac});
         this.image = ImageRadiologique.query();
 //      
-       console.log("coucou");
-       this.updateImage = function () {
+        console.log("coucou");
+        this.updateImage = function () {
             // appel POST asynchrone au service web sur /crayons/{id} 
             this.acte.images.push(this.ImageSelect);
             this.acte.$save();
             //$location.path("/rechercheracte");
         };
     }]);
+
+angular.module('monApp').controller('admissionActeController', ['$routeParams', 'Admission','ActeRadiologique', '$location',
+    function ($routeParams, Admission, ActeRadiologique, $location) {
+        console.log("route params : " + $routeParams.iep);
+        this.admission = Admission.get({id: $routeParams.iep});
+        this.acte = ActeRadiologique.query({ad: $routeParams.iep});
+    }]);
+
 
 angular.module('monApp').controller('AppareilController', ['Appareil',
     function (Appareil) {
@@ -225,8 +233,9 @@ angular.module('monApp').controller('AdmissionNewController', ['Admission', '$lo
     }]);
 
 angular.module('monApp').controller('AdmissionEditController', ['$routeParams', 'Admission', '$location',
-    function ($routeParams, CCAM, $location) {
-        this.admission = CCAM.get({id: $routeParams.iep});
+    function ($routeParams, Admission, $location) {
+        this.admission = Admission.get({id: $routeParams.iep});
+        console.log("route paramas : " + $routeParams.iep);
         this.update = function () {
             // appel POST asynchrone au service web sur /crayons/{id} 
             this.admission.$save();

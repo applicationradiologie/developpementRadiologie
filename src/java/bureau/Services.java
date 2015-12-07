@@ -160,8 +160,8 @@ public class Services {
         em.getTransaction().commit();
     }
 
-    public List<ActeRadiologique> getActeRadiologiqueByAdmission(String ipp) {
-        TypedQuery<ActeRadiologique> query = em.createQuery("SELECT a FROM ActeRadiologique a JOIN a.admission adm WHERE adm.admissionIPP= :ipp", ActeRadiologique.class).setParameter("ipp", ipp);
+    public List<ActeRadiologique> getActeRadiologiqueByAdmission(Long iep) {
+        TypedQuery<ActeRadiologique> query = em.createQuery("SELECT a FROM ActeRadiologique a JOIN a.admission adm WHERE adm.admissionIEP= :iep", ActeRadiologique.class).setParameter("iep", iep);
         List<ActeRadiologique> res = query.getResultList();
         return res;
 

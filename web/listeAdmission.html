@@ -25,7 +25,8 @@
         <tr ng-repeat='ad in ctrl.admission'>
             <td> {{ ad.admissionIEP}} </td>
             <td> {{ ad.admissionIPP}} </td>
-            <td> <a ng-href="#/admissionEdition/{{ad.admissionIEP}}"/> Editer </a>
+            <td> <a ng-href="#/admissionActe/{{ad.admissionIEP}}"/><input type="button" value="Consulter les actes"/> </a>
+            <td> <a ng-href="#/admissionEdition/{{ad.admissionIEP}}"/><input type="button" value="Editer"/> </a>
             <td> <input type="button" value="Supprimer" ng-click="ctrl.delete(ap)"/> 
         </tr>
     </table>
