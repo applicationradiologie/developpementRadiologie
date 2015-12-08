@@ -226,6 +226,7 @@ public class Services {
     }
 
     public List<ImageRadiologique> getImagesByAdmission(String ipp) {
+        System.out.println("ca passe");
         TypedQuery<ActeRadiologique> query = em.createQuery("SELECT a FROM ActeRadiologique a JOIN a.admission adm WHERE adm.admissionIPP= :ipp", ActeRadiologique.class).setParameter("ipp", ipp);
         List<ActeRadiologique> res = query.getResultList();
         List<ImageRadiologique> img = new ArrayList<>();

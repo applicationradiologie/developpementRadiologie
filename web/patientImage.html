@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<!--
++To change this license header, choose License Headers in Project Properties.
++To change this template file, choose Tools | Templates
++and open the template in the editor.
++-->
+<html>
+    <head>
+        <title>Liste des images</title>
+        <meta charset="UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-resource.js"></script>
+        <script src="app.js"></script>
+        <script src="controllers.js"></script>
+        <script src="services.js"></script>
+    </head>   
+    <body>
+        <h2>Image Radiologique du patient</h2>
+    <table>
+        <tr>
+            <th> Id </th>
+            <th> Format </th>
+            <th> Libellé </th>
+            <th> Poids </th>
+            <th> URL </th>
+            <th> Aperçu </th>
+        <tr ng-repeat='im in ctrl.image'>
+            <td> {{ im.imageRadiologiqueId}} </td>
+            <td> {{ im.imageRadiologiqueFormat}} </td>
+            <td> {{ im.imageRadiologiqueLibelle}} </td>
+            <td> {{ im.imageRadiologiquePoids}} </td>
+            <td> {{ im.imageRadiologiqueURL}} </td>
+            <td><img src="{{ im.imageRadiologiqueURL}}" style="width:128px; height:128px;"/></td>
+            <td> <a ng-href="#/imageEdition/{{im.imageRadiologiqueId}}"/> Editer </a>
+        </tr>
+    </table>
+    <a ng-href="#/newImage"><input type="button" value="Créer une Image" /></a>
+</body>
+</html>

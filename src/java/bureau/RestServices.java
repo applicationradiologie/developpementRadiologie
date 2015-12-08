@@ -244,9 +244,15 @@ public class RestServices {
     @GET
     @Path("imageradiologique")
     @Produces("application/json")
-    public List<ImageRadiologique> getImageRadiologique() {
+    public List<ImageRadiologique> getImageRadiologique(@DefaultValue("") @QueryParam("im") String im) {
         //TODO return proper representation object
-        return serv.getAllImageRadiologique();
+        
+        System.out.println("Valeur du query params : " + im);
+        if (im != null) {
+            return serv.getImagesByAdmission(im);
+        } else {
+            return serv.getAllImageRadiologique();
+        }
     }
 
     //Obtenir une image

@@ -74,10 +74,16 @@ angular.module('monApp').controller('admissionActeController', ['$routeParams', 
         this.acte = ActeRadiologique.query({ad: $routeParams.iep});
     }]);
 
+angular.module('monApp').controller('patientImageController', ['$routeParams', 'Admission','ImageRadiologique', '$location',
+    function ($routeParams, Admission, ImageRadiologique, $location) {
+        console.log("route params : " + $routeParams.ipp);
+        this.image = ImageRadiologique.query({im: $routeParams.ipp});
+    }]);
+
 
 angular.module('monApp').controller('AppareilController', ['Appareil',
     function (Appareil) {
-        console.log("ca passe");
+        
         this.appa = Appareil.query();
         this.delete = function (ap) {
             // appel DELETE asynchrone au service web sur /crayons/{id}
@@ -195,9 +201,6 @@ angular.module('monApp').controller('ImageNewController', ['ImageRadiologique', 
             $location.path("/listeImage");
         };
     }]);
-
-
-
 
 angular.module('monApp').controller('ImageEditController', ['$routeParams', 'ImageRadiologique', '$location',
     function ($routeParams, ImageRadiologique, $location) {
