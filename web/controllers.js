@@ -49,9 +49,17 @@ angular.module('monApp').controller('ActeRadiologiqueEditController', ['$routePa
             // appel POST asynchrone au service web sur /crayons/{id} 
             this.acte.images.push(this.ImageSelect);
             this.acte.$save();
-            //$location.path("/rechercheracte");
+            $location.path("/rechercheracte");
         };
     }]);
+
+angular.module('monApp').controller('acteImageController', ['$routeParams', 'ActeRadiologique','ImageRadiologique', '$location',
+    function ($routeParams, ActeRadiologique,ImageRadiologique, $location) {
+        console.log("route params : " + $routeParams.iep);
+        this.acte = ActeRadiologique.get({id: $routeParams.ac});
+        this.image = ImageRadiologique.query();
+    }]);
+
 
 angular.module('monApp').controller('AjoutImageActeController', ['$routeParams', 'ActeRadiologique', 'ImageRadiologique', '$location',
     function ($routeParams, ActeRadiologique, ImageRadiologique, $location) {
@@ -63,7 +71,7 @@ angular.module('monApp').controller('AjoutImageActeController', ['$routeParams',
             // appel POST asynchrone au service web sur /crayons/{id} 
             this.acte.images.push(this.ImageSelect);
             this.acte.$save();
-            //$location.path("/rechercheracte");
+            $location.path("/rechercheracte");
         };
     }]);
 
@@ -182,7 +190,7 @@ angular.module('monApp').controller('CCAMEditController', ['$routeParams', 'CCAM
 
 angular.module('monApp').controller('ImagesController', ['ImageRadiologique',
     function (ImageRadiologique) {
-        this.imageradiologique = ImageRadiologique.query();
+        this.imageradiologique = ImageRadiologique.query("all");
         this.delete = function (im) {
             // appel DELETE asynchrone au service web sur /crayons/{id}
             //cr.$delete();

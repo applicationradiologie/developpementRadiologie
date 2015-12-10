@@ -19,19 +19,23 @@
     <h1 style="color:white">Radio Tout Faire</h1>
         <h4 style="color:white"> Le module pour le service d'imagerie </h4>
     <table>
+        <tr><td height='10px'></td></tr>
+        <tr><td>    <b>Rechercher</b>   <input type="text" style="width:60%" ng-model="filterExpr"/></td></tr>
+        <tr><td height='10px'></td></tr>
         <tr>
             <th> Id (PACS) </th>
             <th> Date</th>
             <th> CCAM </th>
             <th> IEP Admi </th>
             <th> Appareil </th>
-        <tr ng-repeat='ac in ctrl.acte'>
+        <tr ng-repeat='ac in ctrl.acte | filter:filterExpr'>
             <td> {{ ac.acteRadiologiquePACS}} </td>&nbsp
             <td> {{ ac.acteRadiologiqueDate}} </td>&nbsp
             <td> {{ ac.CCAM.CCAMLibelle}} </td>&nbsp
             <td> {{ ac.admission.admissionIEP}} </td>&nbsp
             <td> {{ ac.appareil.appareilLibelle}} </td>&nbsp
             <td> <a ng-href="#/acteEdition/{{ac.acteRadiologiquePACS}}"/><input type="button" value="Editer"/></a>
+            <td> <a ng-href="#/acteImage/{{ac.acteRadiologiquePACS}}"/><input type="button" value="Consulter les images"/></a>
             <td> <a ng-href="#/ajoutImageActe/{{ac.acteRadiologiquePACS}}"/><input type="button" value="Ajouter des images"/></a>
             <td> <input type="button" value="Supprimer" ng-click="ctrl.delete(ac)"/> 
         </tr>

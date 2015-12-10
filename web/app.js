@@ -92,5 +92,9 @@ angular.module('monApp').config(['$routeProvider', function routeConfig($routePr
                     controller: "patientImageController as ctrl",
                     templateUrl: 'patientImage.html'
                 })
+                .when('/acteImage/:ac', {
+                    controller: "acteImageController as ctrl",
+                    templateUrl: 'listeImageActe.html'
+                })
                 .otherwise({redirectTo: '/'});
     }]);

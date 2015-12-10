@@ -19,10 +19,13 @@
     <h1 style="color:white">Radio Tout Faire</h1>
         <h4 style="color:white"> Le module pour le service d'imagerie </h4>
     <table>
+        <tr><td height='10px'></td></tr>
+        <tr><td>    <b>Rechercher</b>   <input type="text" style="width:60%" ng-model="filterExpr"/></td></tr>
+        <tr><td height='10px'></td></tr>
         <tr>
             <th> IPP </th>
             <th> IPP</th>
-        <tr ng-repeat='ad in ctrl.admission'>
+        <tr ng-repeat='ad in ctrl.admission | filter:filterExpr'>
             <td> {{ ad.admissionIEP}} </td>
             <td> {{ ad.admissionIPP}} </td>
             <td> <a ng-href="#/admissionActe/{{ad.admissionIEP}}"/><input type="button" value="Consulter les actes"/> </a></td>

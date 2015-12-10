@@ -330,9 +330,9 @@ public class Services {
 
     public void removeCCAM(Long CCAMid) {
 
-        Appareil ap = em.find(Appareil.class, CCAMid);
+        CCAM ca = em.find(CCAM.class, CCAMid);
         em.getTransaction().begin();
-        em.remove(ap);
+        em.remove(ca);
         em.getTransaction().commit();
 
     }

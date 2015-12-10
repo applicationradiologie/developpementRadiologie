@@ -248,8 +248,10 @@ public class RestServices {
         //TODO return proper representation object
         
         System.out.println("Valeur du query params : " + im);
-        if (im != null) {
+        if (!(im.isEmpty())) {
+            System.out.println("Recherche des images pour le patient : " + im);
             return serv.getImagesByAdmission(im);
+            
         } else {
             return serv.getAllImageRadiologique();
         }
@@ -341,7 +343,7 @@ public class RestServices {
     @DELETE
     @Path("appareil")
     public Response removeAppareil(Appareil ap) {
-        System.out.println("coucou ");
+        System.out.println("suppression ");
         serv.removeAppareil(ap);
         return Response.status(200).build();
     }
@@ -350,6 +352,7 @@ public class RestServices {
     @DELETE
     @Path("imageradiologique/{im}")
     public Response removeimageradiologique(@PathParam("im") Long imageRadiologiqueId) {
+        
         serv.removeImageRadiologique(imageRadiologiqueId);
         return Response.status(200).build();
     }

@@ -11,22 +11,24 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
+        <h2>Ajout d'image à l'acte {{ ctrl.acte.acteRadiologiquePACS}}</h2>
         <table>
+            <tr ><td height='20%'></td> </tr>
             <tr>
                 <td>
-                    <h2>Ajout d'image à l'acte {{ ctrl.acte.acteRadiologiquePACS}}</h2>
+                    
                     <form novalidate class="simple-form">
                         <table>
-
-                            <tr><td>Image:</td><td> <div class="input-control select">
-                                        <select  ng-model="ctrl.ImageSelect" ng-options="im.imageRadiologiqueLibelle for im in ctrl.image">
+                            <tr><td height='20%'>Choisissez une image à ajouter : </td><td height='20%'> <div class="input-control select">
+                                        <select  ng-model="ctrl.ImageSelect" ng-options="im.imageRadiologiqueLibelle+' ('+im.imageRadiologiqueId+')' for im in ctrl.image">
                                         </select>
                                     </div><br /></td></tr>
-                            <tr><td></td><td><input type="submit" ng-click="ctrl.updateImage()" value="Ajouter l'image" /></td></tr>
-
+                            <tr><td height='20%'></td><td height='20%'><input type="submit" ng-click="ctrl.updateImage()" value="Ajouter l'image" /></td></tr>
+                            <tr><td height='80%'></td> </tr>
                         </table>
                     </form>
                 </td>
+                <td width='10%'></td>
                 <td>
                     <table>
                         <tr>
