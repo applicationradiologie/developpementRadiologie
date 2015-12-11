@@ -17,15 +17,18 @@
     </head>   
     <body>
     <table>
+        <tr><td height='10px'></td></tr>
+        <tr><td>    <b>Rechercher</b>   <input type="text" style="width:60%" ng-model="filterExpr"/></td></tr>
+        <tr><td height='10px'></td></tr>
         <tr>
-            <th> Id </th>
+            <th height='10%'> Id </th>
             <th> Format </th>
             <th> Libellé </th>
             <th> Poids </th>
             <th> URL </th>
             <th> Aperçu </th>
-        <tr ng-repeat='im in ctrl.imageradiologique'>
-            <td> {{ im.imageRadiologiqueId}} </td>
+        <tr ng-repeat='im in ctrl.imageradiologique | filter:filterExpr'>
+            <td height='10%'> {{ im.imageRadiologiqueId}} </td>
             <td> {{ im.imageRadiologiqueFormat}} </td>
             <td> {{ im.imageRadiologiqueLibelle}} </td>
             <td> {{ im.imageRadiologiquePoids}} </td>
